@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nitish - Portfolio</title>
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="diddysstyle.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">Nitish</a>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-content container">
+        <h1>Creative & Innovative</h1>
+        <p id="typing-tagline"></p>
+        
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+    </div>
+    <div class="scroll-down">
+        <a href="#about"><span></span></a>
+    </div>
+</section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container about-content">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>I am a Computer Engineering student with a specialization in <b>Data Science from J.C. Bose University of Science and Technology</b>, passionate about leveraging data to solve real-world problems. With strong skills in <b>Python, Machine Learning, Data Analysis</b>, and Web Development, I have hands-on experience in building predictive models and performing statistical analysis. I have worked on projects ranging from sales analytics and sentiment analysis to insurance claim prediction and handwritten digit recognition. I am eager to apply my skills in data-driven decision-making and machine learning to develop innovative solutions in dynamic and challenging environments.
+                </p>
+                <!-- Removed empty <p> tag -->
+            </div>
+            <div class="about-image">
+                <!-- Replace with your actual photo -->
+                <img src="mepic.jpg" alt="Nitish">
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="project-grid">
+                <!-- Project Card 1 -->
+                <div class="project-card"
+                     data-title="Insurance Claim Prediction"
+                     data-img-src="output3.png"
+                     data-description="Developed a machine learning model to predict the likelihood of insurance claim approvals based on customer demographics and policy details. Utilized data preprocessing, feature engineering, and classification algorithms to achieve high accuracy and actionable insights for insurers."
+                     data-link="https://github.com/NastyMafia/Insurance-Claim-Prediction">
+                    <img src="output3.png" alt="Insurance Claim Prediction">
+                    <div class="card-content">
+                        <h3>Insurance Claim Prediction</h3>
+                        <p>Developed a machine learning model to predict the likelihood of insurance claim approvals...</p>
+                        <button class="btn btn-secondary view-project-btn">View Details</button>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="project-card"
+                     data-title="Handwritten Digit Recognition"
+                     data-img-src="HDR1.png"
+                     data-description="Built a deep learning model using the MNIST dataset to classify handwritten digits from 0 to 9. Leveraged convolutional neural networks (CNNs) in Python with TensorFlow/Keras to achieve high accuracy in digit recognition, showcasing the power of image processing and neural networks."
+                     data-link="https://github.com/NastyMafia/HDR">
+                    <img src="HDR1.png" alt="Handwritten Digit Recognition">
+                    <div class="card-content">
+                        <h3>Handwritten Digit Recognition</h3>
+                        <p>Built a deep learning model using the MNIST dataset to classify handwritten digits...</p>
+                         <button class="btn btn-secondary view-project-btn">View Details</button>
+                    </div>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="project-card"
+                     data-title="Sentiment Analysis"
+                     data-img-src="senti_img1.png"
+                     data-description="Created a natural language processing (NLP) pipeline to analyze customer reviews and classify sentiments as positive, negative, or neutral. Implemented text preprocessing, vectorization, and machine learning models to extract insights and trends from unstructured text data."
+                     data-link="https://github.com/NastyMafia/Sentiment_Analysis">
+                    <img src="senti_img1.png" alt="Sentiment Analysis">
+                    <div class="card-content">
+                        <h3>Sentiment Analysis</h3>
+                        <p>Created a natural language processing (NLP) pipeline to analyze customer reviews...</p>
+                        <button class="btn btn-secondary view-project-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="project-card"
+                     data-title="Sales Analysis"
+                     data-img-src="SA1.png"
+                     data-description="Performed in-depth analysis of sales data to uncover patterns and forecast future sales. Applied statistical methods, time series forecasting, and data visualization to deliver insights that support strategic business decisions and improve performance."
+                     data-link="https://github.com/NastyMafia/Sales_Analysis">
+                    <img src="SA1.png" alt="Sales Analysis">
+                    <div class="card-content">
+                        <h3>Sales Analysis</h3>
+                        <p>Performed in-depth analysis of sales data to uncover patterns and forecast future sales...</p>
+                        <button class="btn btn-secondary view-project-btn">View Details</button>
+                    </div>
+                </div>
+                <!-- Add more project cards as needed, with data-* attributes -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>Have a project in mind or just want to say hi? Feel free to reach out!</p>
+            <div class="contact-form">
+                 <p>You can reach me via email at:</p>
+                 <a href="mailto:nitishrohilla77624@gmail.com" class="contact-email">nitishrohilla77624@gmail.com</a>
+                 <p>Or find me on:</p>
+                 <div class="social-links">
+                     <a href="https://www.linkedin.com/in/nitish-rohilla-b95a7123b/" target="_blank">LinkedIn</a> |
+                     <a href="https://github.com/NastyMafia" target="_blank">GitHub</a> |
+                     <a href="tel:+917206368408" target="_blank">+91 72063 68408</a>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+             <p>© 2025 Nitish. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Project Details Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">×</span>
+            <img id="modalImg" src="" alt="Project Image">
+            <h3 id="modalTitle"></h3>
+            <p id="modalDescription"></p>
+            <a id="modalLink" href="#" class="btn btn-primary" target="_blank" style="display: none;">Visit Project Site</a>
+        </div>
+    </div>
+
+    <!-- Link to JavaScript file (Place just before closing </body>) -->
+    <script src="script.js"></script>
+
+</body>
+</html>
