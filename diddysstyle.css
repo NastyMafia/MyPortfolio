@@ -184,41 +184,36 @@ header nav ul li a:hover {
     flex-direction: column; /* Stack children vertically */
     align-items: center;   /* Center children horizontally */
 }
+
 .hero-content h1 {
     color: var(--text-light);
     animation: none;
-    margin-bottom: 15px; /* Adjust spacing if needed */
+    margin-bottom: 15px; /* Existing */
 }
-.hero-content p#typing-tagline { /* Be more specific */
-    font-size: 1.2rem;
+
+/* Target the specific paragraph for typing */
+.hero-content p#typing-tagline {
+    font-size: 2.4rem; /* CHANGED: Increased font size */
     font-weight: 300;
-    margin-bottom: 30px;
+    margin-bottom: 30px; /* Keep or adjust as needed */
     color: rgba(255, 255, 255, 0.9);
-    min-height: 1.5em; /* Keep this to prevent vertical jumps */
-    /* The display: inline-block and ::after styles for the cursor remain */
-}
-/* Ensure the button has some top margin if needed */
-.hero-content .btn-primary {
-     margin-top: 0; /* Reset if needed, or adjust spacing */
+    min-height: 1.5em; /* Keep to prevent vertical jumps */
+    position: relative; /* Needed for cursor */
+    display: inline-block; /* Needed for cursor */
 }
 
-
-/* Styles for the typing text container and cursor */
-#typing-tagline {
-    display: inline-block; /* Keep for cursor positioning relative to text */
-    position: relative;
-}
-
+/* Adjust cursor position if needed due to larger font */
 #typing-tagline::after {
     content: '|';
     position: absolute;
-    right: -8px;
-    top: -1px;
+    right: -10px;  /* MAYBE ADJUST: Slightly further right */
+    top: 2px;     /* MAYBE ADJUST: Fine-tune vertical alignment */
     display: inline-block;
     color: var(--accent-color);
     animation: blink 0.7s infinite;
     font-weight: 300;
 }
+
 /* ADDED: Blinking animation for the cursor */
 @keyframes blink {
     0%, 100% { opacity: 1; }
@@ -341,8 +336,6 @@ header nav ul li a:hover {
      align-self: flex-start; /* Align button left */
 }
 
-
-/* --- Contact Section --- */
 #contact {
     background-color: var(--primary-color);
     color: var(--text-light);
@@ -351,9 +344,9 @@ header nav ul li a:hover {
 #contact h2 {
     color: var(--text-light);
 }
-#contact p {
+#contact p { /* Keep existing styles, maybe adjust max-width later */
     color: rgba(255, 255, 255, 0.8);
-    max-width: 600px;
+    max-width: 600px; /* We might adjust this in step 3 */
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
@@ -361,13 +354,19 @@ header nav ul li a:hover {
 .contact-email {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--accent-color);
+    color: var(--accent-color); /* Keep original color */
     display: block;
     margin-bottom: 20px;
+    text-decoration: none; /* Explicitly remove underline by default */
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Add smooth transition */
 }
+
+/* ADDED: Specific hover state for the email link */
 .contact-email:hover {
-    text-decoration: underline;
+    color: var(--text-light); /* Make it white on hover */
+    text-decoration: underline; /* Underline on hover */
 }
+
 .social-links a {
     color: var(--text-light);
     margin: 0 10px;
