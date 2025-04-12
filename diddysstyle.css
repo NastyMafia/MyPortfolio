@@ -169,13 +169,38 @@ header nav ul li a:hover {
     /* background: linear-gradient(-45deg, var(--gradient-end), var(--gradient-start), var(--primary-color), var(--gradient-start)); */ /* REMOVED */
     /* background-size: 400% 400%; */ /* REMOVED */
     /* animation: gradientShift 15s ease infinite; */ /* REMOVED */
-    background-color: var(--primary-color); /* ADDED: Set a solid background */
+    /* background-color: var(--primary-color);  ADDED: Set a solid background */
 }
 
-/* REMOVED Keyframes for gradient */
+#bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the video */
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* *** CRITICAL: Puts video BEHIND content *** */
+    object-fit: cover; /* *** Ensures video covers the area, cropping if needed *** */
+}
+
+/* Optional: Add a semi-transparent overlay for better text readability */
+.hero::before { /* Creates overlay using pseudo-element */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(11, 57, 72, 0.5); /* Your primary color, semi-transparent (adjust opacity 0.0 to 1.0) */
+    /* Or use a dark overlay: background-color: rgba(0, 0, 0, 0.4); */
+    z-index: 0; /* Places overlay between video (-1) and content (1) */
+}
 
 .hero-content {
-    z-index: 1;
+    z-index: 1; /* *** CRITICAL: Ensures content is ABOVE video and overlay *** */
+    position: relative; /* Ensures z-index is respected properly */
     max-width: 800px;
     animation: fadeInUp 1s ease-out 0.5s;
     animation-fill-mode: backwards;
