@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nitish - Portfolio</title>
-    <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="diddysstyle.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> -->
+
+    <link rel="stylesheet" href="diddysstyle.css">
 </head>
 <body>
 
@@ -18,7 +21,7 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
+                <li><a href="#stack">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -31,9 +34,7 @@
 
     <!-- ADDED: Background Video -->
     <video autoplay muted loop playsinline id="bg-video">
-        <source src="bghome.webm" type="video/webm">
-        <!-- Optional: Add other formats for better browser compatibility -->
-        <!-- <source src="bghome.mp4" type="video/mp4"> -->
+        <source src="images/bghome.webm" type="video/webm">
         Your browser does not support the video tag.
     </video>
 
@@ -41,7 +42,7 @@
     <div class="hero-content container">
         <h1>Creative & Innovative</h1>
         <p id="typing-tagline"></p>
-        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#projects" class="btn1 btn-primary" style="display: inline-block; font-weight: 400; line-height: 1.5; color: #212529; text-align: center; text-decoration: none; vertical-align: middle; cursor: pointer; user-select: none; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; border-radius: 1rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out; background-color: #00ffaa; color: #ffffff; border: 2px solid #ffffff;">View My Work</a>
     </div>
 
     <!-- Existing Scroll Down Indicator -->
@@ -57,202 +58,193 @@
                 <h2>About Me</h2>
                 <p>I am a Computer Engineering student with a specialization in <b>Data Science from J.C. Bose University of Science and Technology</b>, passionate about leveraging data to solve real-world problems. With strong skills in <b>Python, Machine Learning, Data Analysis</b>, and Web Development, I have hands-on experience in building predictive models and performing statistical analysis. I have worked on projects ranging from sales analytics and sentiment analysis to insurance claim prediction and handwritten digit recognition. I am eager to apply my skills in data-driven decision-making and machine learning to develop innovative solutions in dynamic and challenging environments.
                 </p>
-                <!-- Removed empty <p> tag -->
             </div>
             <div class="about-image">
-                <!-- Replace with your actual photo -->
-                <img src="mepic.jpg" alt="Nitish">
+                <img src="images/mepic.jpg" alt="Nitish">
             </div>
         </div>
     </section>
 
-    <!-- Skills Section (Badge Style) -->
-    <section id="skills" style="background-color: var(--secondary-color);"> <!-- Light gray background -->
+    <!-- Tech Stack Section -->
+    <section id="stack" class="tech-stack-section">
         <div class="container">
-            <h2>My Skills</h2>
-            <div class="skills-grid">
-                <!-- Languages -->
-                <span class="skill-badge">Python</span>
-                <span class="skill-badge">SQL</span>
-                <!-- <span class="skill-badge">JavaScript</span> -->
-                <!-- <span class="skill-badge">HTML5</span> -->
-                <!-- <span class="skill-badge">CSS3</span> -->
-
-                <!-- Data Analysis & ML -->
-                <span class="skill-badge">Pandas</span>
-                <span class="skill-badge">NumPy</span>
-                <span class="skill-badge">Scikit-learn</span>
-                <span class="skill-badge">TensorFlow/Keras</span>
-                <span class="skill-badge">NLTK</span>
-                <span class="skill-badge">Machine Learning</span>
-                <span class="skill-badge">Predictive Analytics</span>
-                <span class="skill-badge">Regression</span>
-                <span class="skill-badge">Decision Trees</span>
-                <span class="skill-badge">Data Modelling</span>
-                <span class="skill-badge">Data Mining</span>
-                <span class="skill-badge">EDA</span>
-                <span class="skill-badge">Survey Data Collection</span>
-
-                <!-- Data Visualization -->
-                <span class="skill-badge">Matplotlib</span>
-                <span class="skill-badge">Seaborn</span>
-                <span class="skill-badge">Wordcloud</span>
-                <span class="skill-badge">Tableau/PowerBI</span>
-                <span class="skill-badge">Data Visualization</span>
-
-                <!-- Databases & Warehousing -->
-                <span class="skill-badge">Data Warehousing</span>
-
-                <!-- Tools & Technologies -->
-                <span class="skill-badge">Git</span>
-                <span class="skill-badge">GitHub</span>
-                <span class="skill-badge">Jupyter Notebooks</span>
-                <span class="skill-badge">VS Code</span>
-                <span class="skill-badge">SocketIO</span>
-                <span class="skill-badge">WebSockets</span>
-
-                <!-- Add any other skills here -->
-
-            </div> <!-- End skills-grid -->
-        </div> <!-- End container -->
+            <div class="tech-stack-header">
+                <h2>
+                    Solving real problems with<br>
+                    <span class="tech-stack-animated" id="stack-animated-text">constantly expanding skills</span>
+                </h2>
+            </div>
+            <div class="tech-stack-grid">
+                <div class="tech-stack-item" data-tech="Python" data-color="#3572A5">
+                    <img src="images/skills/python1.png" alt="Python">
+                </div>
+                <div class="tech-stack-item" data-tech="Node.js" data-color="#3C873A">
+                    <img src="images/skills/nodejs.png" alt="Node.js">
+                </div>
+                <div class="tech-stack-item" data-tech="MongoDB" data-color="#47A248">
+                    <img src="images/skills/stats.gif" alt="MongoDB">
+                </div>
+                <div class="tech-stack-item" data-tech="Socket.IO" data-color="#010101">
+                    <img src="images/skills/socket.gif" alt="Socket.IO">
+                </div>
+                <div class="tech-stack-item" data-tech="Git" data-color="#F05032">
+                    <img src="images/skills/git.png" alt="Git">
+                </div>
+                <div class="tech-stack-item" data-tech="ML models" data-color="#FFB300">
+                    <img src="images/skills/ai.gif" alt="ML models">
+                </div>
+                <div class="tech-stack-item" data-tech="NLP" data-color="#8E44AD">
+                    <img src="images/skills/nlp.gif" alt="NLP">
+                </div>
+                <div class="tech-stack-item" data-tech="Neural Networks" data-color="#E74C3C">
+                    <img src="images/skills/neural.gif" alt="Neural Networks">
+                </div>
+                <div class="tech-stack-item" data-tech="SQL" data-color="#336791">
+                    <img src="images/skills/sql.gif" alt="SQL">
+                </div>
+            </div>
+        </div>
     </section>
 
-<!-- Chat Application Section -->
-<section id="chat-app">
-    <div class="container">
-        <h2>Real-Time Chat Application</h2>
-        <p>Check out my real-time chat application:</p>
-        <a href="chat-app/index.html" class="btn btn-primary">Open Chat App</a>
-    </div>
-</section>
-
-<!-- Projects Section -->
+<!-- Project Section -->
 <section id="projects">
-    <div class="container">
-        <h2>My Projects</h2>
-        <div class="project-grid">
-            <!-- Project Card 1: Real-Time Chat App -->
-            <div class="project-card">
-                <img src="Rtca.png" alt="Real-Time Chat Application">
-                <div class="card-content">
-                    <h3>Real-Time Chat Application</h3>
-                    <p>
-                        <b>Goal:</b> Developed a real-time chat application to facilitate instant messaging between users.<br>
-                        <b>How:</b> Utilized Socket.IO for real-time communication, Express.js for server-side logic, and React for the front-end interface. Implemented user authentication and message storage using MongoDB.<br>
-                        <b>Result:</b> Achieved near-instant message delivery (typically under 100ms latency) in real-world testing. Supported seamless messaging for multiple users simultaneously.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Socket.IO</span>
-                        <span class="tag">WebSockets</span>
-                        <span class="tag">React</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Express.js</span>
+    <div class="container project-layout-container">
+
+        <!-- === Left Column: Stacked Project List === -->
+        <div class="project-stack-column">
+            <h2>My Projects</h2>
+            <div class="project-stack-container" id="project-list">
+
+                <!-- Project Card 1: Real-Time Chat App -->
+                <div class="project-card active"
+                    data-project-id="chat-app"
+                    data-title="Real-Time Chat Application"
+                    data-img-src="images/Rtca.png"
+                    data-icon-src="images/icons/chat.gif"
+                    data-description="<b>Goal:</b> Developed a real-time chat application to facilitate instant messaging between users.<br><b>How:</b> Utilized Socket.IO for real-time communication, Express.js for server-side logic, and React for the front-end interface. Implemented user authentication and message storage using MongoDB.<br><b>Result:</b> Achieved near-instant message delivery (typically under 100ms latency) in real-world testing. Supported seamless messaging for multiple users simultaneously."
+                    data-tags='["Socket.IO", "WebSockets", "React", "Node.js", "Express.js"]'
+                    data-live-link="chat-app/index.html"
+                    data-github-link="https://github.com/NastyMafia/realtime-chat-app">
+                    <div class="card-header">
+                        <img src="images/icons/chat.gif" alt="" class="card-header-icon"> <!-- Icon -->
+                        <h3>Real-Time Chat Application</h3>
                     </div>
-                    <div class="project-buttons">
-                        <a href="chat-app/index.html" class="btn btn-outline-success" target="_blank">Open App</a>
-                        <a href="https://github.com/NastyMafia/realtime-chat-app" class="btn btn-outline-primary" target="_blank">View on GitHub</a>
+                    <div class="card-preview">
+                        <img src="images/Rtca.png" alt="Real-Time Chat Application Preview">
+                        <div class="project-tags">
+                            <span class="tag">Socket.IO</span><span class="tag">WebSockets</span><span class="tag">React</span><span class="tag">Node.js</span>
+                        </div>
                     </div>
+                    <!-- No .card-details needed here anymore -->
+                </div> <!-- End Project Card 1 -->
+
+                <!-- Project Card 2: Insurance Claim -->
+                <div class="project-card"
+                     data-project-id="insurance-claim"
+                     data-title="Insurance Claim Prediction"
+                     data-img-src="images/output3.png"
+                     data-icon-src="images/icons/insurance.gif"
+                     data-description="<b>Goal:</b> Developed a machine learning web application to predict whether an insurance claim would be approved.<br><b>How:</b> Trained multiple classification models including Decision Trees and Random Forest. Used Matplotlib for data visualization and deployed the best-performing model.<br><b>Result:</b> Achieved a model accuracy of 87%, leading to a 20% improvement over baseline predictions."
+                     data-tags='["ML models", "Regression", "Decision Trees", "Pandas", "Matplotlib"]'
+                     data-github-link="https://github.com/NastyMafia/Insurance-Claim-Prediction">
+                     <div class="card-header">
+                         <img src="images/icons/insurance.gif" alt="" class="card-header-icon">
+                         <h3>Insurance Claim Prediction</h3>
+                    </div>
+                    <div class="card-preview">
+                        <img src="images/output3.png" alt="Insurance Claim Prediction Preview">
+                         <div class="project-tags">
+                            <span class="tag">ML models</span><span class="tag">Regression</span><span class="tag">Pandas</span>
+                         </div>
+                    </div>
+                </div> <!-- End Project Card 2 -->
+
+                <!-- Project Card 3: Handwritten Digit -->
+                <div class="project-card"
+                     data-project-id="digit-recognition"
+                     data-title="Handwritten Digit Recognition"
+                     data-img-src="images/HDR1.png"
+                     data-icon-src="images/icons/digit.gif"
+                     data-description="<b>Goal:</b> Built a machine learning model to accurately recognize and classify handwritten digits (0–9) using the MNIST dataset.<br><b>How:</b> Preprocessed image data, applied feature scaling, and trained multiple models including Logistic Regression, SVM, and a basic Neural Network.<br><b>Result:</b> Achieved 97% accuracy on the test set. Successfully recognized handwritten digits in real-time input."
+                     data-tags='["Python", "TensorFlow", "Keras", "CNNs", "Deep Learning"]'
+                     data-github-link="https://github.com/NastyMafia/HDR">
+                    <div class="card-header">
+                        <img src="images/icons/digit.gif" alt="" class="card-header-icon">
+                        <h3>Handwritten Digit Recognition</h3>
+                    </div>
+                    <div class="card-preview">
+                        <img src="images/HDR1.png" alt="Handwritten Digit Recognition Preview">
+                        <div class="project-tags">
+                             <span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">CNNs</span>
+                        </div>
+                    </div>
+                </div> <!-- End Project Card 3 -->
+
+                 <!-- Project Card 4: Sentiment Analysis -->
+                 <div class="project-card"
+                      data-project-id="sentiment-analysis"
+                      data-title="Sentiment Analysis"
+                      data-img-src="images/senti_img1.png"
+                      data-icon-src="images/icons/sentiment.gif"
+                      data-description="<b>Goal:</b> Developed a model to detect public sentiment in social media posts, focusing on depressive or negative content.<br><b>How:</b> Cleaned and pre-processed tweets using NLTK, implemented Logistic Regression, and visualized patterns with WordCloud and Matplotlib.<br><b>Result:</b> Achieved 82% accuracy, with improved detection of depressive posts on 10,000+ tweets."
+                      data-tags='["Python", "NLTK", "Matplotlib", "Wordcloud", "NLP"]'
+                      data-github-link="https://github.com/NastyMafia/Sentiment_Analysis">
+                    <div class="card-header">
+                        <img src="images/icons/sentiment.gif" alt="" class="card-header-icon">
+                        <h3>Sentiment Analysis</h3>
+                    </div>
+                     <div class="card-preview">
+                         <img src="images/senti_img1.png" alt="Sentiment Analysis Preview">
+                         <div class="project-tags">
+                             <span class="tag">Python</span><span class="tag">NLTK</span><span class="tag">NLP</span>
+                         </div>
+                     </div>
+                 </div> <!-- End Project Card 4 -->
+
+                 <!-- Project Card 5: Sales Analysis -->
+                 <div class="project-card"
+                      data-project-id="sales-analysis"
+                      data-title="Sales Analysis"
+                      data-img-src="images/SA1.png"
+                      data-icon-src="icons/sales.gif"
+                      data-description="<b>Goal:</b> Analyse historical sales data to uncover patterns and forecast future trends.<br><b>How:</b> Performed EDA using Pandas, Seaborn, and Matplotlib; built interactive dashboards with Tableau and Power BI.<br><b>Result:</b> Identified key trends and top-performing regions, resulting in a 15% improvement in forecast accuracy."
+                      data-tags='["Python", "Pandas", "Matplotlib", "Seaborn", "Tableau/PowerBI", "EDA"]'
+                      data-github-link="https://github.com/NastyMafia/Sales_Analysis">
+                    <div class="card-header">
+                        <img src="images/icons/sales.gif" alt="" class="card-header-icon">
+                        <h3>Sales Analysis</h3>
+                    </div>
+                     <div class="card-preview">
+                         <img src="images/SA1.png" alt="Sales Analysis Preview">
+                         <div class="project-tags">
+                            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">EDA</span>
+                         </div>
+                     </div>
+                 </div> <!-- End Project Card 5 -->
+            </div> <!-- End project-stack-container -->
+        </div> <!-- End project-stack-column -->
+
+        <!-- === Right Column: Project Description === -->
+        <div class="project-description-column" id="project-details-pane">
+            <div class="description-content sticky-top"> <!-- Added sticky-top class -->
+                <img src="Rtca.png" alt="Project main image" id="project-detail-image" class="detail-image">
+                <h3 id="project-detail-title"></h3>
+                 <!-- Optional: Icon in details pane -->
+                 <!-- <img src="" alt="" id="project-detail-icon" class="detail-header-icon"> -->
+                <div id="project-detail-description" class="detail-description"></div>
+                <div id="project-detail-tags" class="project-tags detail-tags"></div>
+                <div id="project-detail-buttons" class="project-buttons detail-buttons">
+                    <!-- Buttons will be populated by JS -->
+                    <a href="#" id="project-detail-live-link" class="btn btn-outline-success" target="_blank" style="display: none;">Open App</a>
+                    <a href="#" id="project-detail-github-link" class="btn btn-outline-primary" target="_blank" style="display: none;">View on GitHub</a>
                 </div>
             </div>
+        </div> <!-- End project-description-column -->
 
-            <!-- Project Card 2: Insurance Claim -->
-            <div class="project-card">
-                <img src="output3.png" alt="Insurance Claim Prediction">
-                <div class="card-content">
-                    <h3>Insurance Claim Prediction</h3>
-                    <p>
-                        <b>Goal:</b> Developed a machine learning web application to predict whether an insurance claim would be approved.<br>
-                        <b>How:</b> Trained multiple classification models including Decision Trees and Random Forest. Used Matplotlib for data visualization and deployed the best-performing model.<br>
-                        <b>Result:</b> Achieved a model accuracy of 87%, leading to a 20% improvement over baseline predictions.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">ML models</span>
-                        <span class="tag">Regression</span>
-                        <span class="tag">Decision Trees</span>
-                        <span class="tag">Pandas</span>
-                        <span class="tag">Matplotlib</span>
-                    </div>
-                    <div class="project-buttons">
-                        <a href="https://github.com/NastyMafia/Insurance-Claim-Prediction" class="btn btn-outline-primary" target="_blank">View on GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project Card 3: Handwritten Digit -->
-            <div class="project-card">
-                <img src="HDR1.png" alt="Handwritten Digit Recognition">
-                <div class="card-content">
-                    <h3>Handwritten Digit Recognition</h3>
-                    <p>
-                        <b>Goal:</b> Built a machine learning model to accurately recognize and classify handwritten digits (0–9) using the MNIST dataset.<br>
-                        <b>How:</b> Preprocessed image data, applied feature scaling, and trained multiple models including Logistic Regression, SVM, and a basic Neural Network.<br>
-                        <b>Result:</b> Achieved 97% accuracy on the test set. Successfully recognized handwritten digits in real-time input.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">TensorFlow</span>
-                        <span class="tag">Keras</span>
-                        <span class="tag">CNNs</span>
-                        <span class="tag">Deep Learning</span>
-                    </div>
-                    <div class="project-buttons">
-                        <a href="https://github.com/NastyMafia/HDR" class="btn btn-outline-primary" target="_blank">View on GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project Card 4: Sentiment Analysis -->
-            <div class="project-card">
-                <img src="senti_img1.png" alt="Sentiment Analysis">
-                <div class="card-content">
-                    <h3>Sentiment Analysis</h3>
-                    <p>
-                        <b>Goal:</b> Developed a model to detect public sentiment in social media posts, focusing on depressive or negative content.<br>
-                        <b>How:</b> Cleaned and pre-processed tweets using NLTK, implemented Logistic Regression, and visualized patterns with WordCloud and Matplotlib.<br>
-                        <b>Result:</b> Achieved 82% accuracy, with improved detection of depressive posts on 10,000+ tweets.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">NLTK</span>
-                        <span class="tag">Matplotlib</span>
-                        <span class="tag">Wordcloud</span>
-                        <span class="tag">NLP</span>
-                    </div>
-                    <div class="project-buttons">
-                        <a href="https://github.com/NastyMafia/Sentiment_Analysis" class="btn btn-outline-primary" target="_blank">View on GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project Card 5: Sales Analysis -->
-            <div class="project-card">
-                <img src="SA1.png" alt="Sales Analysis">
-                <div class="card-content">
-                    <h3>Sales Analysis</h3>
-                    <p>
-                        <b>Goal:</b> Analyse historical sales data to uncover patterns and forecast future trends.<br>
-                        <b>How:</b> Performed EDA using Pandas, Seaborn, and Matplotlib; built interactive dashboards with Tableau and Power BI.<br>
-                        <b>Result:</b> Identified key trends and top-performing regions, resulting in a 15% improvement in forecast accuracy.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Pandas</span>
-                        <span class="tag">Matplotlib</span>
-                        <span class="tag">Seaborn</span>
-                        <span class="tag">Tableau/PowerBI</span>
-                        <span class="tag">EDA</span>
-                    </div>
-                    <div class="project-buttons">
-                        <a href="https://github.com/NastyMafia/Sales_Analysis" class="btn btn-outline-primary" target="_blank">View on GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
+    </div> <!-- End project-layout-container -->
 </section>
 
-    <!-- Contact Section -->
+<!-- Contact Section -->
     <section id="contact">
         <div class="container">
             <h2>Get In Touch</h2>
@@ -284,7 +276,7 @@
             <img id="modalImg" src="" alt="Project Image">
             <h3 id="modalTitle"></h3>
             <p id="modalDescription"></p>
-            <a id="modalLink" href="#" class="btn btn-primary" target="_blank" style="display: none;">Visit Project Site</a>
+            <a id="modalLink" href="#" class="btn btn-secondary" target="_blank" style="display: none;">Visit Project Site</a>
         </div>
     </div>
 
