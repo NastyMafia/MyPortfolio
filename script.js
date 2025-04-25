@@ -1,4 +1,134 @@
-// Wait for the DOM to be fully loaded
+const animated = document.getElementById('stack-animated-text');
+document.querySelectorAll('.tech-stack-item').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        const text = this.getAttribute('data-tech');
+        const color = this.getAttribute('data-color') || '#198754';
+        animated.classList.add('switching');
+        setTimeout(() => {
+            animated.textContent = text;
+            animated.style.color = color;
+            animated.classList.remove('switching');
+        }, 300); // Match this to your CSS transition duration (0.3s)
+    });
+    item.addEventListener('mouseleave', function() {
+        animated.classList.add('switching');
+        setTimeout(() => {
+            animated.textContent = 'constantly expanding skills';
+            animated.style.color = '';
+            animated.classList.remove('switching');
+        }, 300);
+    });
+});
+document.addEventListener('DOMContentLoaded', () => {
+
+    const projectListContainer = document.getElementById('project-list');
+    const descriptionPane = document.getElementById('project-details-pane');
+
+    // Right pane elements
+    const detailImage = document.getElementById('project-detail-image');
+    const detailTitle = document.getElementById('project-detail-title');
+    const detailDescription = document.getElementById('project-detail-description');
+    const detailTagsContainer = document.getElementById('project-detail-tags');
+    const detailLiveLink = document.getElementById('project-detail-live-link');
+    const detailGithubLink = document.getElementById('project-detail-github-link');
+    // const detailIcon = document.getElementById('project-detail-icon'); // If using icon in details
+
+    if (!projectListContainer || !descriptionPane || !detailImage || !detailTitle || !detailDescription || !detailTagsContainer || !detailLiveLink || !detailGithubLink) {
+        console.error("One or more required project elements not found.");
+        return;
+    }
+
+    // Function to update the right description pane
+    function updateDescriptionPane(projectCard) {
+        if (!projectCard) return;
+
+        const data = projectCard.dataset; // Get all data attributes
+
+        // --- Populate Details ---
+        detailImage.src = data.imgSrc || ''; // Set image source
+        detailImage.alt = data.title ? `${data.title} preview` : 'Project preview';
+
+        detailTitle.textContent = data.title || 'Project Details';
+
+        // detailIcon.src = data.iconSrc || ''; // If using icon in details
+
+        detailDescription.innerHTML = data.description || '<p>No description available.</p>'; // Use innerHTML as description contains HTML tags
+
+        // --- Populate Tags ---
+        detailTagsContainer.innerHTML = ''; // Clear existing tags
+        try {
+            const tags = JSON.parse(data.tags || '[]'); // Parse JSON string, default to empty array
+            if (Array.isArray(tags)) {
+                tags.forEach(tagText => {
+                    const tagElement = document.createElement('span');
+                    tagElement.className = 'tag';
+                    tagElement.textContent = tagText;
+                    detailTagsContainer.appendChild(tagElement);
+                });
+            }
+        } catch (e) {
+            console.error("Failed to parse project tags JSON:", data.tags, e);
+        }
+
+        // --- Populate Buttons ---
+        // Live Link
+        if (data.liveLink) {
+            detailLiveLink.href = data.liveLink;
+            detailLiveLink.style.display = 'inline-block'; // Show button
+        } else {
+            detailLiveLink.style.display = 'none'; // Hide button
+        }
+
+        // GitHub Link
+        if (data.githubLink) {
+            detailGithubLink.href = data.githubLink;
+            detailGithubLink.style.display = 'inline-block'; // Show button
+        } else {
+            detailGithubLink.style.display = 'none'; // Hide button
+        }
+
+        // Optional: Scroll description pane to top if content changes significantly
+        descriptionPane.querySelector('.description-content').scrollTop = 0;
+    }
+
+    // Event Listener for clicks on project cards (using delegation)
+    projectListContainer.addEventListener('click', (event) => {
+        // Find the closest project-card element that was clicked or is an ancestor
+        const clickedCard = event.target.closest('.project-card');
+
+        if (clickedCard && !clickedCard.classList.contains('active')) {
+            // Remove 'active' class from currently active card
+            const currentActive = projectListContainer.querySelector('.project-card.active');
+            if (currentActive) {
+                currentActive.classList.remove('active');
+            }
+
+            // Add 'active' class to the clicked card
+            clickedCard.classList.add('active');
+
+            // Update the description pane
+            updateDescriptionPane(clickedCard);
+        }
+    });
+
+    // --- Initial Load ---
+    // Find the initially active card
+    const initialActiveCard = projectListContainer.querySelector('.project-card.active');
+    if (initialActiveCard) {
+        updateDescriptionPane(initialActiveCard); // Populate pane on load
+    } else {
+        // Fallback: If no card has .active class initially, activate the first one
+        const firstCard = projectListContainer.querySelector('.project-card');
+        if (firstCard) {
+             firstCard.classList.add('active');
+             updateDescriptionPane(firstCard);
+        } else {
+            descriptionPane.innerHTML = '<p>No projects found.</p>'; // Handle empty state
+        }
+    }
+
+}); // End DOMContentLoaded
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- START: Typing Text Animation ---
