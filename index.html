@@ -132,46 +132,39 @@
         <h2>My Projects</h2>
         <div class="project-grid">
             <!-- Project Card 1: Real-Time Chat App -->
-            <div class="project-card"
-                 data-title="Real-Time Chat Application"
-                 data-img-src="chat_socio.png"
-                 data-description="Goal: Created a live messaging platform to enable real-time user communication.
-                How: Implemented bidirectional communication using Web Sockets with Socket.IO and Flask-SocketIO. Built a dynamic frontend with React and backend using Flask.
-                Result: Supported message latency under 200ms."
-                 data-link="https://github.com/NastyMafia/realtime-chat-app">
+            <div class="project-card">
                 <img src="Rtca.png" alt="Real-Time Chat Application">
                 <div class="card-content">
                     <h3>Real-Time Chat Application</h3>
-                    <p>Developed a real-time chat app using WebSockets for instant messaging between users...</p>
-                    <!-- ADDED Tags -->
+                    <p>
+                        <b>Goal:</b> Developed a real-time chat application to facilitate instant messaging between users.<br>
+                        <b>How:</b> Utilized Socket.IO for real-time communication, Express.js for server-side logic, and React for the front-end interface. Implemented user authentication and message storage using MongoDB.<br>
+                        <b>Result:</b> Achieved near-instant message delivery (typically under 100ms latency) in real-world testing. Supported seamless messaging for multiple users simultaneously.
+                    </p>
                     <div class="project-tags">
                         <span class="tag">Socket.IO</span>
                         <span class="tag">WebSockets</span>
                         <span class="tag">React</span>
                         <span class="tag">Node.js</span>
                         <span class="tag">Express.js</span>
-                        <!-- Or use <span class="tag">Flask</span> <span class="tag">Python</span> if that was the backend -->
                     </div>
                     <div class="project-buttons">
-                        <button class="btn btn-secondary view-project-btn">View Details</button>
-                        <a href="chat-app/index.html" class="btn btn-outline-success">Open App</a>
+                        <a href="chat-app/index.html" class="btn btn-outline-success" target="_blank">Open App</a>
+                        <a href="https://github.com/NastyMafia/realtime-chat-app" class="btn btn-outline-primary" target="_blank">View on GitHub</a>
                     </div>
                 </div>
             </div>
 
             <!-- Project Card 2: Insurance Claim -->
-            <div class="project-card"
-                 data-title="Insurance Claim Prediction"
-                 data-img-src="output3.png"
-                 data-description="Goal: Developed a machine learning web application to predict whether an insurance claim would be approved. 
-                How: Trained multiple classification models including Decision Trees and Random Forest. Used Matplotlib for data visualization and deployed the best-performing model.
-                Result: Achieved a model accuracy of 87%, leading to a 20% improvement over baseline predictions"
-                 data-link="https://github.com/NastyMafia/Insurance-Claim-Prediction">
+            <div class="project-card">
                 <img src="output3.png" alt="Insurance Claim Prediction">
                 <div class="card-content">
                     <h3>Insurance Claim Prediction</h3>
-                    <p>Developed a machine learning model to predict the likelihood of insurance claim approvals...</p>
-                    <!-- ADDED Tags -->
+                    <p>
+                        <b>Goal:</b> Developed a machine learning web application to predict whether an insurance claim would be approved.<br>
+                        <b>How:</b> Trained multiple classification models including Decision Trees and Random Forest. Used Matplotlib for data visualization and deployed the best-performing model.<br>
+                        <b>Result:</b> Achieved a model accuracy of 87%, leading to a 20% improvement over baseline predictions.
+                    </p>
                     <div class="project-tags">
                         <span class="tag">ML models</span>
                         <span class="tag">Regression</span>
@@ -179,23 +172,22 @@
                         <span class="tag">Pandas</span>
                         <span class="tag">Matplotlib</span>
                     </div>
-                    <button class="btn btn-secondary view-project-btn">View Details</button>
+                    <div class="project-buttons">
+                        <a href="https://github.com/NastyMafia/Insurance-Claim-Prediction" class="btn btn-outline-primary" target="_blank">View on GitHub</a>
+                    </div>
                 </div>
             </div>
 
             <!-- Project Card 3: Handwritten Digit -->
-            <div class="project-card"
-                 data-title="Handwritten Digit Recognition"
-                 data-img-src="HDR1.png"
-                 data-description="Goal: Built a machine learning model to accurately recognize and classify handwritten digits (0–9) using the MNIST dataset.
-                How: Preprocessed image data, applied feature scaling, and trained multiple models including Logistic Regression, Support Vector Machine (SVM), and a basic Neural Network. Evaluated performance using confusion matrix and accuracy metrics.
-                Result: Achieved 97% accuracy on the test set. Successfully recognized handwritten digits in real-time input, demonstrating reliable classification performance."
-                 data-link="https://github.com/NastyMafia/HDR">
+            <div class="project-card">
                 <img src="HDR1.png" alt="Handwritten Digit Recognition">
                 <div class="card-content">
                     <h3>Handwritten Digit Recognition</h3>
-                    <p>Built a deep learning model using the MNIST dataset to classify handwritten digits...</p>
-                     <!-- ADDED Tags (Example - Update if you have specific ones) -->
+                    <p>
+                        <b>Goal:</b> Built a machine learning model to accurately recognize and classify handwritten digits (0–9) using the MNIST dataset.<br>
+                        <b>How:</b> Preprocessed image data, applied feature scaling, and trained multiple models including Logistic Regression, SVM, and a basic Neural Network.<br>
+                        <b>Result:</b> Achieved 97% accuracy on the test set. Successfully recognized handwritten digits in real-time input.
+                    </p>
                     <div class="project-tags">
                         <span class="tag">Python</span>
                         <span class="tag">TensorFlow</span>
@@ -203,24 +195,22 @@
                         <span class="tag">CNNs</span>
                         <span class="tag">Deep Learning</span>
                     </div>
-                    <button class="btn btn-secondary view-project-btn">View Details</button>
+                    <div class="project-buttons">
+                        <a href="https://github.com/NastyMafia/HDR" class="btn btn-outline-primary" target="_blank">View on GitHub</a>
+                    </div>
                 </div>
             </div>
 
             <!-- Project Card 4: Sentiment Analysis -->
-            <div class="project-card"
-                 data-title="Sentiment Analysis"
-                 data-img-src="senti_img1.png"
-                 data-description="Goal: Developed a model to detect public sentiment in social media posts, with a focus on identifying depressive or negative content.
-                How: Cleaned and pre-processed tweets using NLTK, implemented Logistic Regression for sentiment classification, and visualized patterns with WordCloud and Matplotlib. Evaluated model performance with an emphasis on false positive and false negative rates for depressive content.
-                Result: Achieved an overall 82% accuracy, with improved detection of depressive posts and analysis on 10,000+ tweets.
-                Tech Stack: Python, NLTK, Matplotlib, WordCloud"
-                 data-link="https://github.com/NastyMafia/Sentiment_Analysis">
+            <div class="project-card">
                 <img src="senti_img1.png" alt="Sentiment Analysis">
                 <div class="card-content">
                     <h3>Sentiment Analysis</h3>
-                    <p>Created a natural language processing (NLP) pipeline to analyze customer reviews...</p>
-                    <!-- ADDED Tags -->
+                    <p>
+                        <b>Goal:</b> Developed a model to detect public sentiment in social media posts, focusing on depressive or negative content.<br>
+                        <b>How:</b> Cleaned and pre-processed tweets using NLTK, implemented Logistic Regression, and visualized patterns with WordCloud and Matplotlib.<br>
+                        <b>Result:</b> Achieved 82% accuracy, with improved detection of depressive posts on 10,000+ tweets.
+                    </p>
                     <div class="project-tags">
                         <span class="tag">Python</span>
                         <span class="tag">NLTK</span>
@@ -228,23 +218,22 @@
                         <span class="tag">Wordcloud</span>
                         <span class="tag">NLP</span>
                     </div>
-                    <button class="btn btn-secondary view-project-btn">View Details</button>
+                    <div class="project-buttons">
+                        <a href="https://github.com/NastyMafia/Sentiment_Analysis" class="btn btn-outline-primary" target="_blank">View on GitHub</a>
+                    </div>
                 </div>
             </div>
 
             <!-- Project Card 5: Sales Analysis -->
-            <div class="project-card"
-                 data-title="Sales Analysis"
-                 data-img-src="SA1.png"
-                 data-description="Goal: Analyse historical sales data to uncover patterns and forecast future trends.
-                How: Performed EDA using Pandas, Seaborn, and Matplotlib; built interactive dashboards with Tableau and Power BI.
-                Result: Identified key trends and top-performing regions, resulting in a 15% improvement in forecast accuracy."
-                 data-link="https://github.com/NastyMafia/Sales_Analysis">
+            <div class="project-card">
                 <img src="SA1.png" alt="Sales Analysis">
                 <div class="card-content">
                     <h3>Sales Analysis</h3>
-                    <p>Performed in-depth analysis of sales data to uncover patterns and forecast future sales...</p>
-                     <!-- ADDED Tags -->
+                    <p>
+                        <b>Goal:</b> Analyse historical sales data to uncover patterns and forecast future trends.<br>
+                        <b>How:</b> Performed EDA using Pandas, Seaborn, and Matplotlib; built interactive dashboards with Tableau and Power BI.<br>
+                        <b>Result:</b> Identified key trends and top-performing regions, resulting in a 15% improvement in forecast accuracy.
+                    </p>
                     <div class="project-tags">
                         <span class="tag">Python</span>
                         <span class="tag">Pandas</span>
@@ -253,11 +242,12 @@
                         <span class="tag">Tableau/PowerBI</span>
                         <span class="tag">EDA</span>
                     </div>
-                    <button class="btn btn-secondary view-project-btn">View Details</button>
+                    <div class="project-buttons">
+                        <a href="https://github.com/NastyMafia/Sales_Analysis" class="btn btn-outline-primary" target="_blank">View on GitHub</a>
+                    </div>
                 </div>
             </div>
 
-            
         </div>
     </div>
 </section>
