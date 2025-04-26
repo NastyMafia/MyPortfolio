@@ -30,10 +30,10 @@ body {
     background-color: var(--text-light);
 }
 
-body.modal-open {
-     overflow: hidden; 
-}
 
+body.modal-open {
+    overflow: hidden; 
+}
 
 .container {
     max-width: 1100px;
@@ -326,10 +326,10 @@ header nav ul li a:hover {
 
 /* Tech Stack Section */
 .tech-stack-section {
+    background-color: linear-gradient(to bottom, rgba(0, 192, 156, 0.671), rgba(91, 240, 98, 0.671));
     margin: 60px 0 40px 0;
     padding: 0 0 30px 0;
-    /* Added overflow hidden to container if text jump is noticeable */
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .tech-stack-header {
@@ -376,7 +376,9 @@ header nav ul li a:hover {
 
 .tech-stack-item {
     background: #ffffff; /* Consider dark mode alternative if needed */
-    border-radius: 18px;
+    border-radius: 8px;
+    border-style: dashed;
+    border-color: var(--accent-color);
     box-shadow: 0 2px 8px rgba(110, 110, 110, 0.20);
     padding: 1.2rem;
     display: flex;
@@ -400,31 +402,40 @@ header nav ul li a:hover {
 
 .tech-stack-item:hover {
     box-shadow: 0 4px 16px rgba(0, 219, 117, 0.15); /* Use your green color */
-    transform: translateY(-4px); /* Keep scale subtle or remove if not needed */
+    transform: scale(1.1) translateY(-4px); /*Keep scale subtle or remove if not needed */
+    border-style: solid;
+    border-color: #acff71;
 }
 
 .tech-stack-item:hover img {
     filter: none;
-    transform: scale(1.1); /* Slightly smaller scale for less drastic effect */
+    transform: scale(1.4); /* Slightly smaller scale for less drastic effect */
 }
 
 
 /* --- Base Project Section Layout --- */
 #projects {
     padding: 60px 0;
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     --card-stack-width: 320px;
     --card-transition-speed: 0.35s;
     --column-gap: 30px; /* Added from previous step */
     --sticky-top-offset: 20px; /* Added from previous step */
 }
 
+a.project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+
 .project-layout-container {
     display: flex;
     flex-wrap: wrap;
     gap: var(--column-gap);
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 60px auto;
     padding: 0 15px;
 }
 
@@ -490,7 +501,7 @@ header nav ul li a:hover {
     flex-grow: 1; /* Allow title to take remaining space */
     min-width: 0; /* Allow shrinking */
     margin: 0;
-    font-size: 0.95rem; /* Keep consistent size */
+    font-size: 0.9rem; /* Keep consistent size */
     font-weight: 600;
     white-space: nowrap;    /* Keep text on one line */
     overflow: hidden;       /* Hide overflow */
@@ -506,9 +517,12 @@ header nav ul li a:hover {
 
 .project-card .card-preview img {
     width: 100%;
-    height: 150px; /* Keep consistent height */
+    height: 120px; /* Keep consistent height */
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: var(--accent-color);
+    border-width: 2px;
     display: block;
     margin-bottom: 12px;
 }
@@ -523,15 +537,15 @@ header nav ul li a:hover {
     background-color: #e9ecef;
     color: #495057;
     padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 500;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
 }
 
 /* --- Hover Effect (ONLY for NON-ACTIVE cards) --- */
-.project-card:not(.active):hover { /* <<< FIXED: Added :not(.active) */
-    max-height: 280px; /* Expand (Adjust if content height differs) */
-    transform: scale(1.02); /* Use scale for hover pop */
+.project-card:not(.active):hover {
+    max-height: 320px;
+    transform: scale(1.02);
     border-color: #adb5bd;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     z-index: 10;
@@ -539,7 +553,7 @@ header nav ul li a:hover {
 }
 
 .project-card:not(.active):hover .card-header h3 { /* <<< FIXED: Added :not(.active) */
-    color: var(--primary-color, #0d6efd);
+    color: var(--primary-color, #0dfd69);
 }
 
 /* --- Active State --- */
@@ -568,10 +582,10 @@ header nav ul li a:hover {
     border-radius: 8px;
     padding: 25px 30px;
     box-shadow: 0 2px 8px rgba(16, 0, 0, 0.06);
-    border: 3px solid #dee2e6;
+    border: 3px solid var(--accent-color);
     position: sticky;
     top: var(--sticky-top-offset);
-    max-height: calc(100vh - var(--sticky-top-offset) - 20px);
+    max-height: calc(100vh);
     
 }
 /* --- Add styles for elements inside .description-content if missing --- */
@@ -588,13 +602,39 @@ header nav ul li a:hover {
 .btn-outline-success { color: var(--primary-color); border-color: var(--primary-color); }
 .btn-outline-success:hover { color: #fff; background-color: var(--primary-color); border-color: var(--primary-color) }
 /* Responsive Adjustments */
-@media (min-width: 769px) {.project-layout-container {flex-wrap: nowrap;}
+@media (min-width: 769px) {
+    .project-layout-container {flex-wrap: nowrap;}
+    .description-content { width: calc(90vw - var(--card-stack-width) - var(--column-gap)- 100px); }
 }
 @media (max-width: 768px) {
     .project-layout-container { flex-direction: column; gap: 40px; }
     .project-stack-column { width: 100%; }
     .project-description-column { height: 50%; width: 50%; }
-    .description-content { position: static; max-height: none; overflow-y: visible; }
+    .description-content { position: static; max-height: none; width:90vw; overflow-y: visible; }
+    .project-card:not(.active):hover { 
+        max-height: 50px;         
+        transform: none;         
+        border-color: #dee2e6;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        z-index: auto;     
+        overflow: hidden;       
+        background-color: #ffffff;
+        cursor: default; 
+    }
+    .project-card:not(.active):hover .card-header h3 {
+        color: #343a40; 
+    }
+    a.project-card-link .project-card:active { 
+        transform: scale(0.98);
+        opacity: 0.9;
+        overflow: hidden;
+        transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+    }
+    a.project-card-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
 }
 
 
@@ -673,7 +713,7 @@ footer {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #ffffff;
     margin: auto;
     padding: 30px;
     border: 1px solid #888;
