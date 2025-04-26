@@ -1,24 +1,31 @@
+// --- Tech Stack Animated Text ---
 const animated = document.getElementById('stack-animated-text');
-document.querySelectorAll('.tech-stack-item').forEach(item => {
-    item.addEventListener('mouseenter', function() {
-        const text = this.getAttribute('data-tech');
-        const color = this.getAttribute('data-color') || '#198754';
-        animated.classList.add('switching');
-        setTimeout(() => {
-            animated.textContent = text;
-            animated.style.color = color;
-            animated.classList.remove('switching');
-        }, 300); // Match this to your CSS transition duration (0.3s)
+if (animated) { // Check if element exists before adding listeners
+    document.querySelectorAll('.tech-stack-item').forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            const text = this.getAttribute('data-tech');
+            const color = this.getAttribute('data-color') || '#198754';
+            animated.classList.add('switching');
+            setTimeout(() => {
+                animated.textContent = text;
+                animated.style.color = color;
+                animated.classList.remove('switching');
+            }, 300); // Match this to your CSS transition duration (0.3s)
+        });
+        item.addEventListener('mouseleave', function() {
+            animated.classList.add('switching');
+            setTimeout(() => {
+                animated.textContent = 'constantly expanding skills';
+                animated.style.color = ''; // Reset color
+                animated.classList.remove('switching');
+            }, 300);
+        });
     });
-    item.addEventListener('mouseleave', function() {
-        animated.classList.add('switching');
-        setTimeout(() => {
-            animated.textContent = 'constantly expanding skills';
-            animated.style.color = '';
-            animated.classList.remove('switching');
-        }, 300);
-    });
-});
+} else {
+    console.warn("Element with ID 'stack-animated-text' not found.");
+}
+
+// --- Project List and Details Pane Logic ---
 document.addEventListener('DOMContentLoaded', () => {
 
     const projectListContainer = document.getElementById('project-list');
@@ -31,11 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailTagsContainer = document.getElementById('project-detail-tags');
     const detailLiveLink = document.getElementById('project-detail-live-link');
     const detailGithubLink = document.getElementById('project-detail-github-link');
-    // const detailIcon = document.getElementById('project-detail-icon'); // If using icon in details
 
+    // Perform null checks robustly
     if (!projectListContainer || !descriptionPane || !detailImage || !detailTitle || !detailDescription || !detailTagsContainer || !detailLiveLink || !detailGithubLink) {
-        console.error("One or more required project elements not found.");
-        return;
+        console.error("One or more required project elements not found in the DOM.");
+        // Optionally provide user feedback or stop execution if critical elements are missing
+        // descriptionPane.innerHTML = "<p>Error loading project details interface.</p>";
+        return; // Stop script execution for this block if essential elements are missing
     }
 
     // Function to update the right description pane
@@ -50,9 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         detailTitle.textContent = data.title || 'Project Details';
 
-        // detailIcon.src = data.iconSrc || ''; // If using icon in details
-
-        detailDescription.innerHTML = data.description || '<p>No description available.</p>'; // Use innerHTML as description contains HTML tags
+        // Use innerHTML carefully - ensure data.description is trusted or sanitized if needed
+        detailDescription.innerHTML = data.description || '<p>No description available.</p>';
 
         // --- Populate Tags ---
         detailTagsContainer.innerHTML = ''; // Clear existing tags
@@ -65,6 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     tagElement.textContent = tagText;
                     detailTagsContainer.appendChild(tagElement);
                 });
+            } else {
+                 console.warn("Project tags data is not an array:", data.tags);
             }
         } catch (e) {
             console.error("Failed to parse project tags JSON:", data.tags, e);
@@ -72,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- Populate Buttons ---
         // Live Link
-        if (data.liveLink) {
+        if (data.liveLink && data.liveLink !== '#') { // Check for valid link
             detailLiveLink.href = data.liveLink;
             detailLiveLink.style.display = 'inline-block'; // Show button
         } else {
@@ -80,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // GitHub Link
-        if (data.githubLink) {
+        if (data.githubLink && data.githubLink !== '#') { // Check for valid link
             detailGithubLink.href = data.githubLink;
             detailGithubLink.style.display = 'inline-block'; // Show button
         } else {
@@ -88,173 +98,215 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Optional: Scroll description pane to top if content changes significantly
-        descriptionPane.querySelector('.description-content').scrollTop = 0;
+        const descriptionContent = descriptionPane.querySelector('.description-content');
+        if (descriptionContent) {
+             descriptionContent.scrollTop = 0;
+        }
     }
 
-    // Event Listener for clicks on project cards (using delegation)
-    projectListContainer.addEventListener('click', (event) => {
-        // Find the closest project-card element that was clicked or is an ancestor
-        const clickedCard = event.target.closest('.project-card');
-
-        if (clickedCard && !clickedCard.classList.contains('active')) {
-            // Remove 'active' class from currently active card
-            const currentActive = projectListContainer.querySelector('.project-card.active');
-            if (currentActive) {
-                currentActive.classList.remove('active');
+        // Event Listener for clicks on project cards (using delegation)
+        projectListContainer.addEventListener('click', (event) => {
+            const clickedCardDiv = event.target.closest('.project-card');
+    
+            if (!clickedCardDiv) {
+                return; // Exit if click wasn't inside a card's content area
             }
-
-            // Add 'active' class to the clicked card
-            clickedCard.classList.add('active');
-
-            // Update the description pane
-            updateDescriptionPane(clickedCard);
-        }
-    });
+    
+            // --- Update description pane regardless of screen size ---
+            try {
+                updateDescriptionPane(clickedCardDiv);
+            } catch (error) {
+                 console.error("Error during updateDescriptionPane:", error);
+            }
+    
+            // --- Handle active state and scrolling based on screen size ---
+            if (window.innerWidth > 768) {
+                // --- DESKTOP LOGIC ---
+                // Add .active class only on desktop (triggers CSS expansion)
+                if (!clickedCardDiv.classList.contains('active')) {
+                    const currentActive = projectListContainer.querySelector('.project-card.active');
+                    if (currentActive) {
+                        currentActive.classList.remove('active');
+                    }
+                    clickedCardDiv.classList.add('active');
+                }
+                // Desktop scroll is handled by the default <a> tag behavior
+            } else {
+                // --- MOBILE LOGIC ---
+                // Ensure no card appears active/expanded on mobile after click
+                const currentActive = projectListContainer.querySelector('.project-card.active');
+                if (currentActive) {
+                    currentActive.classList.remove('active');
+                }
+    
+                // Scroll to the details pane using JavaScript on mobile
+                const detailsPane = document.getElementById('project-details-pane');
+                if (detailsPane) {
+                    detailsPane.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            }
+        }); // End Event Listener
 
     // --- Initial Load ---
-    // Find the initially active card
-    const initialActiveCard = projectListContainer.querySelector('.project-card.active');
-    if (initialActiveCard) {
-        updateDescriptionPane(initialActiveCard); // Populate pane on load
-    } else {
-        // Fallback: If no card has .active class initially, activate the first one
-        const firstCard = projectListContainer.querySelector('.project-card');
-        if (firstCard) {
-             firstCard.classList.add('active');
-             updateDescriptionPane(firstCard);
-        } else {
-            descriptionPane.innerHTML = '<p>No projects found.</p>'; // Handle empty state
+    // Decide whether to activate a card on load based on screen size
+    if (window.innerWidth > 768) {
+        // On desktop, find the initially active card or activate the first one
+        let initialCardToActivate = projectListContainer.querySelector('.project-card.active');
+        if (!initialCardToActivate) {
+             initialCardToActivate = projectListContainer.querySelector('.project-card');
         }
+
+        if (initialCardToActivate) {
+            initialCardToActivate.classList.add('active'); // Ensure it has the class
+            updateDescriptionPane(initialCardToActivate); // Populate pane on load
+        } else {
+             // Handle empty state if no projects exist
+             if (descriptionPane) {
+                 descriptionPane.innerHTML = '<p>No projects found.</p>';
+             }
+        }
+    } else {
+        // On mobile, ensure NO card starts with the .active class (or handle via CSS override)
+        const currentActive = projectListContainer.querySelector('.project-card.active');
+         if (currentActive) {
+             currentActive.classList.remove('active'); // Remove active class on mobile load
+         }
+         // You might still want to show *some* default content in the right pane on mobile,
+         // or hide it completely until a card is tapped (if navigating to a new page/section).
+         // For now, this just ensures no card is active/expanded.
+         // Example: Load first project's details without activating the card itself
+          const firstCard = projectListContainer.querySelector('.project-card');
+          if (firstCard) {
+              //updateDescriptionPane(firstCard); // Uncomment if you want initial details shown on mobile
+          } else if (descriptionPane) {
+             descriptionPane.innerHTML = '<p>No projects found.</p>';
+          }
+
     }
 
-}); // End DOMContentLoaded
+}); // End Project List DOMContentLoaded
 
+
+// --- Separate DOMContentLoaded for other functionalities ---
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- START: Typing Text Animation ---
     const typingElement = document.getElementById('typing-tagline');
-    const roles = ["Data Analyst", "Graphic Designer", "Software Developer"];
-    let roleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typingSpeed = 100; // Milliseconds per character
-    const deletingSpeed = 50; // Faster when deleting
-    const delayBetweenRoles = 1500; // Pause after typing a role
-
-    function type() {
-        const currentRole = roles[roleIndex];
-        let textToShow = '';
-
-        if (isDeleting) {
-            // Remove characters
-            textToShow = currentRole.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            // Add characters
-            textToShow = currentRole.substring(0, charIndex + 1);
-            charIndex++;
-        }
-
-        typingElement.textContent = textToShow;
-
-        let delay = isDeleting ? deletingSpeed : typingSpeed;
-
-        // Check if finished typing or deleting
-        if (!isDeleting && charIndex === currentRole.length) {
-            // Finished typing the role
-            delay = delayBetweenRoles; // Pause before starting to delete
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            // Finished deleting the role
-            isDeleting = false;
-            roleIndex = (roleIndex + 1) % roles.length; // Move to the next role (loop)
-            delay = typingSpeed * 2; // Short pause before typing next role
-        }
-
-        setTimeout(type, delay);
-    }
-
-    // Start the typing animation if the element exists
     if (typingElement) {
-        setTimeout(type, 500); // Initial delay before starting
+        const roles = ["Data Analyst", "Graphic Designer", "Software Developer"];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingSpeed = 100;
+        const deletingSpeed = 50;
+        const delayBetweenRoles = 1500;
+
+        function type() {
+            // Ensure element still exists (e.g., if removed dynamically)
+             if (!document.getElementById('typing-tagline')) return;
+
+            const currentRole = roles[roleIndex];
+            let textToShow = '';
+
+            if (isDeleting) {
+                textToShow = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                textToShow = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            typingElement.textContent = textToShow;
+
+            let delay = isDeleting ? deletingSpeed : typingSpeed;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                delay = delayBetweenRoles;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                delay = typingSpeed * 2;
+            }
+
+            setTimeout(type, delay);
+        }
+        setTimeout(type, 500); // Start after a short delay
     }
     // --- END: Typing Text Animation ---
 
 
-    // --- START: Modal Logic (Existing Code) ---
-    // Get modal elements
+    // --- START: Modal Logic ---
     const modal = document.getElementById('projectModal');
-    const modalImg = document.getElementById('modalImg');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDescription = document.getElementById('modalDescription');
-    const modalLink = document.getElementById('modalLink');
-    const closeBtn = modal.querySelector('.close-btn');
-    const body = document.body; // Get the body element
+    const viewProjectBtns = document.querySelectorAll('.view-project-btn'); // Assuming these are still used for something else
 
-    // Get all "View Details" buttons
-    const viewProjectBtns = document.querySelectorAll('.view-project-btn');
+    if (modal && viewProjectBtns.length > 0) { // Check if modal and buttons exist
+        const modalImg = document.getElementById('modalImg');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalLink = document.getElementById('modalLink');
+        const closeBtn = modal.querySelector('.close-btn');
+        const body = document.body;
 
-    // Function to open the modal
-    function openModal(title, imgSrc, description, link) {
-        modalTitle.textContent = title;
-        modalImg.src = imgSrc;
-        modalImg.alt = title; // Set alt text for accessibility
-        modalDescription.textContent = description;
-
-        // Handle the link button visibility and href
-        if (link && link !== '#') {
-            modalLink.href = link;
-            modalLink.style.display = 'inline-block'; // Show the button
-        } else {
-            modalLink.style.display = 'none'; // Hide the button if no valid link
+        // Check if all modal inner elements exist
+        if (!modalImg || !modalTitle || !modalDescription || !modalLink || !closeBtn) {
+             console.error("One or more required elements inside the modal not found.");
+             return; // Stop modal logic setup if elements are missing
         }
 
-        modal.classList.add('active'); // Add class to show modal and trigger CSS animation
-        body.classList.add('modal-open'); // Add class to body to disable scrolling
-    }
+        function openModal(title, imgSrc, description, link) {
+            modalTitle.textContent = title;
+            modalImg.src = imgSrc;
+            modalImg.alt = title;
+            modalDescription.textContent = description;
 
-    // Function to close the modal
-    function closeModal() {
-        modal.classList.remove('active');
-        body.classList.remove('modal-open'); // Remove class from body to restore scrolling
-    }
+            if (link && link !== '#') {
+                modalLink.href = link;
+                modalLink.style.display = 'inline-block';
+            } else {
+                modalLink.style.display = 'none';
+            }
 
-    // Add click event listener to each "View Details" button
-    viewProjectBtns.forEach(button => {
-        button.addEventListener('click', () => {
-            const card = button.closest('.project-card'); // Find the parent project card
-            if (!card) return; // Safety check
+            modal.classList.add('active');
+            body.classList.add('modal-open');
+        }
 
-            // Get data from data-* attributes
-            const title = card.dataset.title || 'Project Title'; // Provide defaults
-            const imgSrc = card.dataset.imgSrc || 'placeholder-project.png';
-            const description = card.dataset.description || 'No description available.';
-            const link = card.dataset.link; // Will be undefined if attribute doesn't exist
+        function closeModal() {
+            if (modal) { // Check if modal exists
+                modal.classList.remove('active');
+            }
+            body.classList.remove('modal-open');
+        }
 
-            openModal(title, imgSrc, description, link);
+        viewProjectBtns.forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.project-card') || button.closest('.project-details-pane'); // Adjust selector if needed
+                if (!card || !card.dataset) {
+                     console.warn("Could not find associated data for modal button.");
+                     return;
+                }
+
+                const title = card.dataset.title || 'Project Title';
+                const imgSrc = card.dataset.imgSrc || 'placeholder-project.png';
+                const description = card.dataset.description || 'No description available.';
+                const link = card.dataset.link;
+
+                openModal(title, imgSrc, description, link);
+            });
         });
-    });
 
-    // Add click event listener to the close button
-    if (closeBtn) {
         closeBtn.addEventListener('click', closeModal);
-    }
-
-    // Add click event listener to the modal overlay (to close when clicking outside content)
-    if (modal) {
         modal.addEventListener('click', (event) => {
             if (event.target === modal) {
                 closeModal();
             }
         });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
     }
-
-    // Optional: Close modal on Escape key press
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && modal && modal.classList.contains('active')) {
-            closeModal();
-        }
-    });
     // --- END: Modal Logic ---
 
-}); // End DOMContentLoaded
+}); // End second DOMContentLoaded
