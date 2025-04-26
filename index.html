@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nitish - Portfolio</title>
+    <!-- Add this inside your <head> tag -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,10 +42,11 @@
     </video>
 
     <!-- Existing Hero Content -->
-    <div class="hero-content container">
-        <h1>Creative & Innovative</h1>
+    <div class="hero-content">
+        <h0n>Hi, I'm Nitish</h0n>
+        <h1>A Creative & Innovative</h1>
         <p id="typing-tagline"></p>
-        <a href="#projects" class="btn1 btn-primary" style="display: inline-block; font-weight: 400; line-height: 1.5; color: #212529; text-align: center; text-decoration: none; vertical-align: middle; cursor: pointer; user-select: none; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; border-radius: 1rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out; background-color: #00ffaa; color: #ffffff; border: 2px solid #ffffff;">View My Work</a>
+        <a href="#projects" class="resume-button" style="bottom: -80px; border-radius: 50px;">View My Work</a>
     </div>
 
     <!-- Existing Scroll Down Indicator -->
@@ -62,7 +65,9 @@
             </div>
             <div class="about-image">
                 <img src="images/mepic.jpg" alt="Nitish">
+                <a href="images/Nitish_Resume_2025.pdf" class="resume-button" target="_blank">Open CV</a>
             </div>
+            
         </div>
     </section>
 
@@ -251,29 +256,37 @@
 </section>
 
 <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p>Have a project in mind or just want to say hi? Feel free to reach out!</p>
-            <div class="contact-form">
-                 <p>You can reach me via email at:</p>
-                 <a href="mailto:nitishrohilla77624@gmail.com" class="contact-email">nitishrohilla77624@gmail.com</a>
-                 <p>Or find me on:</p>
-                 <div class="social-links">
-                     <a href="https://www.linkedin.com/in/nitish-rohilla-b95a7123b/" target="_blank">LinkedIn</a> |
-                     <a href="https://github.com/NastyMafia" target="_blank">GitHub</a> |
-                     <a href="tel:+917206368408" target="_blank">+91 72063 68408</a>
-                 </div>
+<section id="contact">
+    <div class="container">
+        <h2>Get In Touch</h2>
+        <p>Have a project in mind or just want to say hi? Feel free to reach out!</p>
+        <div class="contact-form">
+            <p>You can reach me via email at:</p>
+            <a href="mailto:nitishrohilla77624@gmail.com" class="contact-email">
+                <i class="fas fa-envelope"></i> nitishrohilla77624@gmail.com
+            </a>
+            <p>Or find me on:</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/nitish-rohilla-b95a7123b/" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/NastyMafia" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://wa.me/917206368408" target="_blank" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-             <p>© 2025 Nitish. All rights reserved.</p>
-        </div>
-    </footer>
+<footer>
+    <div class="container">
+         <p>© 2025 Nitish. All rights reserved.</p>
+    </div>
+</footer>
 
     <!-- Project Details Modal -->
     <div id="projectModal" class="modal">
