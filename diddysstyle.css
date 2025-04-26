@@ -45,12 +45,13 @@ section {
     padding: 80px 0;
 }
 
-h1, h2, h3 {
+h0n, h1, h2, h3 {
     font-weight: 800;
     margin-bottom: 15px;
 }
 
-h1 { font-size: 3rem; animation: fadeInDown 1s ease-out; }
+h0n { font-size: 3rem; animation: fadeInDown 1s ease-out; }
+h1 { font-size: 2.6rem; animation: fadeInDown 1s ease-out; }
 h2 { font-size: 2.5rem; text-align: center; margin-bottom: 40px; color: var(--primary-color); }
 h3 { font-size: 1.5rem; color: var(--primary-color); }
 p { margin-bottom: 15px; color: var(--text-muted); }
@@ -230,6 +231,12 @@ header nav ul li a:hover {
     align-items: center;   /* Center children horizontally */
 }
 
+.hero-content h0n {
+    color: var(--text-light);
+    animation: none;
+    margin-bottom: 15px; /* Existing */
+}
+
 .hero-content h1 {
     color: var(--text-light);
     animation: none;
@@ -251,8 +258,8 @@ header nav ul li a:hover {
 #typing-tagline::after {
     content: '|';
     position: absolute;
-    right: -10px;  /* MAYBE ADJUST: Slightly further right */
-    top: 2px;     /* MAYBE ADJUST: Fine-tune vertical alignment */
+    right: -10px; 
+    top: 2px;   
     display: inline-block;
     color: var(--accent-color);
     animation: blink 0.7s infinite;
@@ -313,7 +320,8 @@ header nav ul li a:hover {
     animation: slideInLeft 1s ease-out;
 }
 .about-image {
-    flex: 1;
+    position: relative;
+    display: inline-block;
     text-align: center;
     animation: slideInRight 1s ease-out;
 }
@@ -322,6 +330,32 @@ header nav ul li a:hover {
     border-radius: 50%;
     border: 5px solid var(--primary-color);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.resume-button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -25px;
+    min-width:170px;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #bbffce;
+    border: 4px var(--primary-color);
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    z-index: 2;
+}
+
+.resume-button:hover {
+    background-color: #00b478;
+    color: #e7e7e7;
+    box-shadow: 0 4px 16px rgba(0, 219, 117, 0.15); /* Use your green color */
+    transform: translateX(-50%) scale(1);
 }
 
 /* Tech Stack Section */
@@ -340,9 +374,8 @@ header nav ul li a:hover {
 .tech-stack-header h2 {
     font-size: 2rem; /* Adjust as needed */
     font-weight: 600;
-    line-height: 1.3; /* Slightly increased for multi-line */
-    /* Add a min-height to prevent layout shifts during animation */
-    min-height: calc(2rem * 1.3 * 2); /* Approx height for two lines */
+    line-height: 1.3;
+    min-height: calc(2rem * 1.3 * 2); 
 }
 
 /* --- Text Animation --- */
@@ -584,6 +617,7 @@ a.project-card-link {
     box-shadow: 0 2px 8px rgba(16, 0, 0, 0.06);
     border: 3px solid var(--accent-color);
     position: sticky;
+    animation: fadeInUp 0.5s ease-out;
     top: var(--sticky-top-offset);
     max-height: calc(100vh);
     
@@ -658,7 +692,7 @@ a.project-card-link {
 .contact-email {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--accent-color); /* Keep original color */
+    color: var(--secondary-color); /* Keep original color */
     display: block;
     margin-bottom: 20px;
     text-decoration: none; /* Explicitly remove underline by default */
@@ -671,14 +705,19 @@ a.project-card-link {
     text-decoration: underline; /* Underline on hover */
 }
 
+/* Add to diddysstyle.css */
 .social-links a {
-    color: var(--text-light);
     margin: 0 10px;
-    font-size: 1rem;
-    transition: color 0.3s ease;
+    font-size: 2rem;
+    color: #ffffff;
+    transition: color 0.2s;
 }
 .social-links a:hover {
-    color: var(--accent-color);
+    color: #fff700;
+}
+.contact-email i {
+    margin-right: 8px;
+    color: #ffffff;
 }
 
 /* --- Footer --- */
