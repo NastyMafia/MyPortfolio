@@ -1,3 +1,26 @@
+window.addEventListener('load', function() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => preloader.style.display = 'none', 400);
+    }
+});
+
+const toggle = document.getElementById('darkModeToggle');
+toggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    // Optional: Save preference
+    if(document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+});
+// On load, set theme from localStorage
+if(localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+}
+
 // --- Tech Stack Animated Text ---
 const animated = document.getElementById('stack-animated-text');
 if (animated) { // Check if element exists before adding listeners

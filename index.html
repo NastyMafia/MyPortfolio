@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="diddysstyle.css">
 </head>
 <body>
+    <div id="preloader">
+        <div class="loader"></div>
+        <span>Loading...</span>
+    </div>
     <!-- Header & Navigation -->
     <header>
         <nav class="container">
@@ -26,6 +30,9 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button id="darkModeToggle" title="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
             
         </nav>
     </header>
@@ -126,13 +133,13 @@
                         data-project-id="chat-app"
                         data-title="Real-Time Chat Application"
                         data-img-src="images/Rtca.png"
-                        data-icon-src="images/icons/chat.gif"
+                        data-icon-src="images/icons/chat1.gif"
                         data-description="<b>Goal:</b> Developed a real-time chat application to facilitate instant messaging between users.<br><b>How:</b> Utilized Socket.IO for real-time communication, Express.js for server-side logic, and React for the front-end interface.<br><b>Result:</b> Achieved near-instant message delivery (typically under 100ms latency) in real-world testing. Supported seamless messaging for multiple users simultaneously."
                         data-tags='["Socket.IO", "WebSockets", "React", "Node.js", "Express.js"]'
                         data-live-link="chat-app/index.html"
                         data-github-link="https://github.com/NastyMafia/realtime-chat-app">
                         <div class="card-header">
-                            <img src="images/icons/chat.gif" alt="" class="card-header-icon">
+                            <img src="images/icons/chat1.gif" alt="" class="card-header-icon">
                             <h3>Real-Time Chat Application</h3>
                         </div>
                         <div class="card-preview">
@@ -150,12 +157,12 @@
                          data-project-id="insurance-claim"
                          data-title="Insurance Claim Prediction"
                          data-img-src="images/output3.png"
-                         data-icon-src="images/icons/insurance.gif"
+                         data-icon-src="images/icons/insurance1.gif"
                          data-description="<b>Goal:</b> Developed a machine learning web application to predict whether an insurance claim would be approved.<br><b>How:</b> Trained multiple classification models including Decision Trees and Random Forest. Used Matplotlib for data visualization and deployed the best-performing model.<br><b>Result:</b> Achieved a model accuracy of 87%, leading to a 20% improvement over baseline predictions."
                          data-tags='["ML models", "Regression", "Decision Trees", "Pandas", "Matplotlib"]'
                          data-github-link="https://github.com/NastyMafia/Insurance-Claim-Prediction">
                         <div class="card-header">
-                            <img src="images/icons/insurance.gif" alt="" class="card-header-icon">
+                            <img src="images/icons/insurance1.gif" alt="" class="card-header-icon">
                             <h3>Insurance Claim Prediction</h3>
                         </div>
                         <div class="card-preview">
@@ -173,12 +180,12 @@
                          data-project-id="digit-recognition"
                          data-title="Handwritten Digit Recognition"
                          data-img-src="images/HDR1.png"
-                         data-icon-src="images/icons/digit.gif"
+                         data-icon-src="images/icons/digit1.gif"
                          data-description="<b>Goal:</b> Built a machine learning model to accurately recognize and classify handwritten digits (0–9) using the MNIST dataset.<br><b>How:</b> Preprocessed image data, applied feature scaling, and trained multiple models including Logistic Regression, SVM, and a basic Neural Network.<br><b>Result:</b> Achieved 97% accuracy on the test set. Successfully recognized handwritten digits in real-time input."
                          data-tags='["Python", "TensorFlow", "Keras", "CNNs", "Deep Learning"]'
                          data-github-link="https://github.com/NastyMafia/HDR">
                         <div class="card-header">
-                            <img src="images/icons/digit.gif" alt="" class="card-header-icon">
+                            <img src="images/icons/digit1.gif" alt="" class="card-header-icon">
                             <h3>Handwritten Digit Recognition</h3>
                         </div>
                         <div class="card-preview">
@@ -196,12 +203,12 @@
                           data-project-id="sentiment-analysis"
                           data-title="Sentiment Analysis"
                           data-img-src="images/senti_img1.png"
-                          data-icon-src="images/icons/sentiment.gif"
+                          data-icon-src="images/icons/sentiment1.gif"
                           data-description="<b>Goal:</b> Developed a model to detect public sentiment in social media posts, focusing on depressive or negative content.<br><b>How:</b> Cleaned and pre-processed tweets using NLTK, implemented Logistic Regression, and visualized patterns with WordCloud and Matplotlib.<br><b>Result:</b> Achieved 82% accuracy, with improved detection of depressive posts on 10,000+ tweets."
                           data-tags='["Python", "NLTK", "Matplotlib", "Wordcloud", "NLP"]'
                           data-github-link="https://github.com/NastyMafia/Sentiment_Analysis">
                         <div class="card-header">
-                            <img src="images/icons/sentiment.gif" alt="" class="card-header-icon">
+                            <img src="images/icons/sentiment1.gif" alt="" class="card-header-icon">
                             <h3>Sentiment Analysis</h3>
                         </div>
                          <div class="card-preview">
@@ -219,12 +226,12 @@
                           data-project-id="sales-analysis"
                           data-title="Sales Analysis"
                           data-img-src="images/SA1.png"
-                          data-icon-src="icons/sales.gif"
+                          data-icon-src="icons/sales1.gif"
                           data-description="<b>Goal:</b> Analyse historical sales data to uncover patterns and forecast future trends.<br><b>How:</b> Performed EDA using Pandas, Seaborn, and Matplotlib; built interactive dashboards with Tableau and Power BI.<br><b>Result:</b> Identified key trends and top-performing regions, resulting in a 15% improvement in forecast accuracy."
                           data-tags='["Python", "Pandas", "Matplotlib", "Seaborn", "Tableau/PowerBI", "EDA"]'
                           data-github-link="https://github.com/NastyMafia/Sales_Analysis">
                         <div class="card-header">
-                            <img src="images/icons/sales.gif" alt="" class="card-header-icon">
+                            <img src="images/icons/sales1.gif" alt="" class="card-header-icon">
                             <h3>Sales Analysis</h3>
                         </div>
                          <div class="card-preview">
@@ -297,8 +304,6 @@
             <a id="modalLink" href="#" class="btn btn-secondary" target="_blank" style="display: none;">Visit Project Site</a>
         </div>
     </div>
-
-    <!-- Link to JavaScript file (Place just before closing </body>) -->
     <script src="script.js"></script>
 
 </body>
