@@ -550,7 +550,7 @@ header nav ul li a:hover {
     left: 0;
     height: 100%;
     width: 100%;
-    background: hsl(226, 25%, 69%);
+    background: #00000041;
     border-radius: 8px;
     filter: blur(2px);
     will-change: transform;
@@ -929,10 +929,12 @@ a.project-card-link {
     color: var(--tag-dark);
     padding: 8px 8px;
 }
-
+.description-content .detail-tags .pushable.tag:hover {
+    filter: brightness(100%);
+}
 .description-content .detail-tags .pushable.tag:hover .front,
 .description-content .detail-tags .pushable.tag:focus .front {
-    background: #cfcfcf;
+    background: var(--tag-light);
 }
 .description-content .detail-tags .pushable.tag .edge{
     background: linear-gradient(to right,#949494, #7a7a7a);
