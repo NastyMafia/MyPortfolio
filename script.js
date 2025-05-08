@@ -85,10 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const tags = JSON.parse(data.tags || '[]'); // Parse JSON string, default to empty array
             if (Array.isArray(tags)) {
                 tags.forEach(tagText => {
-                    const tagElement = document.createElement('span');
-                    tagElement.className = 'tag';
-                    tagElement.textContent = tagText;
-                    detailTagsContainer.appendChild(tagElement);
+                    const tagButton = document.createElement('button');
+                    tagButton.className = 'pushable tag';
+                    tagButton.type = 'button';
+                    tagButton.innerHTML = `
+                        <span class="shadow"></span>
+                        <span class="edge"></span>
+                        <span class="front">${tagText}</span>
+                    `;
+                    detailTagsContainer.appendChild(tagButton);
                 });
             } else {
                  console.warn("Project tags data is not an array:", data.tags);
