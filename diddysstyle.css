@@ -10,6 +10,8 @@
     --text-muted: #d2d2d256;
     --gradient-start: #00f1e1; 
     --gradient-end: #00f1e100; 
+    --tag-light: #e7e7e7;
+    --tag-dark: #8d8d8d;
 }
 
 #darkModeToggle {
@@ -52,6 +54,8 @@ body.dark-mode {
     --gradient-start: #00332e;
     --gradient-end: #00332e00;
     --header-bg: rgba(0, 32, 24, 0.85);
+    --tag-light: #8d8d8d;
+    --tag-dark: #e7e7e7;
     background: #181a1b;
     color: var(--text-light);
 }
@@ -921,8 +925,8 @@ a.project-card-link {
     vertical-align: middle;
 }
 .description-content .detail-tags .pushable.tag .front {
-    background: #e7e7e7;
-    color: #8d8d8d;
+    background: var(--tag-light);
+    color: var(--tag-dark);
     padding: 8px 8px;
 }
 
