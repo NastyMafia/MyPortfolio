@@ -14,32 +14,115 @@
     --tag-dark: #8d8d8d;
 }
 
-#darkModeToggle {
-    background: transparent;
-    border: 3px outset var(--accent-color);
-    border-radius: 50px;
-    cursor: pointer;
-    padding: 0px 4px;
-    margin-left: 12px;
-    display: flex;
-    align-items: center;
+
+.switch {
+font-size: 17px;
+position: relative;
+display: inline-block;
+width: 64px;
+height: 34px;
 }
 
-#darkModeToggle .fa-moon {
-    color: var(--accent-color);
-    padding: 6px;
-    font-size: 2rem;
-    background: transparent;
-    transition: color 0.3s, border-color 0.3s;
-    box-sizing: content-box;
+.switch input {
+opacity: 0;
+width: 0;
+height: 0;
 }
-#darkModeToggle:hover {
-    border: 3px outset var(--tertiary-color);
-    border-radius: 50px;
-    transition: color 0.3s, border-color 0.3s;
+
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #73C0FC;
+transition: .4s;
+border-radius: 20px;
 }
-#darkModeToggle:hover .fa-moon {
-    color: var(--tertiary-color);
+
+.slider:before {
+position: absolute;
+content: "";
+height: 24px;
+width: 24px;
+border: inset, 3px;
+border-color: #08f687;
+border-radius: 20px;
+left: 2px;
+bottom: 2px;
+z-index: 2;
+background-color: #0ce571;
+transition: .4s;
+}
+
+.sun svg {
+position: absolute;
+top: 6px;
+left: 36px;
+z-index: 1;
+width: 24px;
+height: 24px;
+}
+
+.moon svg {
+fill: #73C0FC;
+position: absolute;
+top: 5px;
+left: 5px;
+z-index: 1;
+width: 24px;
+height: 24px;
+}
+
+witch:hover */.sun svg {
+animation: rotate 15s linear infinite;
+}
+
+@keyframes rotate {
+
+0% {
+transform: rotate(0);
+}
+
+100% {
+transform: rotate(360deg);
+}
+}
+
+itch:hover */.moon svg {
+animation: tilt 5s linear infinite;
+}
+
+@keyframes tilt {
+
+0% {
+transform: rotate(0deg);
+}
+
+25% {
+transform: rotate(-10deg);
+}
+
+75% {
+transform: rotate(10deg);
+}
+
+100% {
+transform: rotate(0deg);
+}
+}
+
+.input:checked + .slider {
+background-color: #183153;
+}
+
+.input:focus + .slider {
+box-shadow: 0 0 1px #183153;
+}
+
+.input:checked + .slider:before {
+transform: translateX(30px);
 }
 
 body.dark-mode {
@@ -659,26 +742,114 @@ header nav ul li a:hover {
 .tech-stack-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1rem;
     justify-content: center;
     align-items: center;
     margin-top: 2rem; /* Added some space above grid */
 }
 
+
 .tech-stack-item {
-    background: #ffffff; /* Consider dark mode alternative if needed */
-    border-radius: 8px;
-    border-style: dashed;
-    border-color: var(--accent-color);
-    box-shadow: 0 2px 8px rgba(110, 110, 110, 0.20);
-    padding: 1.2rem;
+    width: 90px;
+    height: 90px;
+    background: #fff; /* or var(--secondary-color) for dark mode support */
+    border-radius: 19px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: box-shadow 0.2s, transform 0.2s;
-    min-width: 80px; /* Ensure consistent size */
-    min-height: 80px;
-    overflow: hidden; /* Prevent image popping out on scale */
+    transition: all 0.25s cubic-bezier(0, 0, 0, 1);
+    box-shadow: 0px 0px 30px 1px rgba(0, 219, 117, 0.18);;
+    position: relative;
+    z-index: 1;
+    padding: 0;
+}
+
+/*
+  CSS Custom Property for smooth gradient angle animation.
+  Place this at the top of your CSS file or within a :root {} selector.
+  It needs to be defined before it's used in animations.
+*/
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 163deg; /* Your original static angle */
+  inherits: false;
+}
+
+.tech-stack-outer {
+    position: relative;
+    overflow: hidden;  /* Recommended for containing ::before pseudo-elements */
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* The main gradient is now handled by ::before.
+       You can add a solid fallback background color here if desired.
+       e.g., background-color: #00caaf; */
+    border-radius: 20px;
+    transition: box-shadow 0.25s cubic-bezier(0, 0, 0, 1);
+    margin: 2px;
+    /* Add any text color or other styling for content inside .tech-stack-outer */
+    /* color: white;
+       font-family: sans-serif; */
+}
+
+.tech-stack-outer::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0; /* Cover the parent */
+    border-radius: inherit; /* Inherits from parent for consistency */
+    z-index: -1; /* Places the gradient behind any content within .tech-stack-outer */
+
+    /* Use the custom property in your linear gradient */
+    background: linear-gradient(
+        var(--gradient-angle), /* Uses the animatable custom property */
+        #00caaf 0%,
+        #17f055 100%
+    );
+    pointer-events: none; /* Pseudo-element shouldn't capture mouse events */
+    /* The original 'opacity: 1' and 'transition: opacity 0.3s' on ::before
+       are removed as the gradient is now always intended to be visible at full opacity
+       and managed by the animation of --gradient-angle. */
+}
+
+.tech-stack-outer:hover {
+    box-shadow: 0px 0px 30px 1px rgba(0, 219, 117, 0.30);
+    /*
+      Other properties (width, height, display, border-radius, margin, etc.)
+      were redundant in your :hover state as they didn't change from the base
+      .tech-stack-outer style. The transition for box-shadow is correctly
+      defined on the base .tech-stack-outer selector.
+    */
+}
+
+/*
+  Updated keyframes for smooth gradient rotation.
+  We animate the --gradient-angle custom property.
+  You can rename 'smooth-rotate-gradient' back to 'rotate-gradient'
+  if you want to keep the exact same keyframe name.
+*/
+@keyframes smooth-rotate-gradient {
+    0% {
+        /* Start at the initial angle defined in @property or explicitly here */
+        --gradient-angle: 163deg;
+    }
+    100% {
+        /* Rotate a full 360 degrees from the starting point */
+        --gradient-angle: calc(163deg + 360deg);
+    }
+}
+
+.tech-stack-outer:hover::before {
+    /* Apply the smooth animation on hover */
+    animation: smooth-rotate-gradient 2s linear infinite;
+    /* The 'opacity: 1;' was redundant as ::before is opacity 1 by default
+       and no previous state was making it transparent before hover. */
+}
+
+.tech-stack-outer:hover .tech-stack-item {
+    transform: scale(0.925);
+    border-radius: 18px;
 }
 
 .tech-stack-item img {
@@ -693,14 +864,13 @@ header nav ul li a:hover {
 
 .tech-stack-item:hover {
     box-shadow: 0 4px 16px rgba(0, 219, 117, 0.15); /* Use your green color */
-    transform: scale(1.1) translateY(-4px); /*Keep scale subtle or remove if not needed */
-    border-style: solid;
-    border-color: #acff71;
+    transform: scale(0.95);
+    z-index: 2;
 }
 
 .tech-stack-item:hover img {
     filter: none;
-    transform: scale(1.4); /* Slightly smaller scale for less drastic effect */
+    transform: scale(1.3);
 }
 
 

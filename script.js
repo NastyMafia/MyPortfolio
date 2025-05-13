@@ -1,24 +1,7 @@
-// --- Removed preloader logic ---
-
-const toggle = document.getElementById('darkModeToggle');
-toggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    // Optional: Save preference
-    if(document.body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark');
-    } else {
-        localStorage.setItem('theme', 'light');
-    }
-});
-// On load, set theme from localStorage
-if(localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark-mode');
-}
-
 // --- Tech Stack Animated Text ---
 const animated = document.getElementById('stack-animated-text');
 if (animated) { // Check if element exists before adding listeners
-    document.querySelectorAll('.tech-stack-item').forEach(item => {
+    document.querySelectorAll('.tech-stack-outer').forEach(item => {
         item.addEventListener('mouseenter', function() {
             const text = this.getAttribute('data-tech');
             const color = this.getAttribute('data-color') || '#198754';
@@ -332,3 +315,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- END: Modal Logic ---
 
 }); // End second DOMContentLoaded
+
+// filepath: f:\Project\clones\MyPortfolio\script.js
+document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.querySelector('#darkModeToggle .input');
+    // Set initial state from localStorage
+    if(localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        if(toggle) toggle.checked = true;
+    }
+    if(toggle) {
+        toggle.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode');
+            if(document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
+});

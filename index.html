@@ -27,10 +27,16 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button id="darkModeToggle" title="Toggle dark mode">
-                <i class="fas fa-moon"></i>
-            </button>
-            
+            <label class="switch" id="darkModeToggle">
+              <span class="sun">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="#ffd43b"><circle r="5" cy="12" cx="12"></circle><path d="m21 13h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm-17 0h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm13.66-5.66a1 1 0 0 1 -.66-.29 1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1 -.75.29zm-12.02 12.02a1 1 0 0 1 -.71-.29 1 1 0 0 1 0-1.41l.71-.66a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1 -.7.24zm6.36-14.36a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm0 17a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm-5.66-14.66a1 1 0 0 1 -.7-.29l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.29zm12.02 12.02a1 1 0 0 1 -.7-.29l-.66-.71a1 1 0 0 1 1.36-1.36l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.24z"></path></g></svg>
+              </span>
+              <span class="moon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="m223.5 32c-123.5 0-223.5 100.3-223.5 224s100 224 223.5 224c60.6 0 115.5-24.2 155.8-63.4 5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6-96.9 0-175.5-78.8-175.5-176 0-65.8 36-123.1 89.3-153.3 6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path></svg>
+              </span>   
+              <input type="checkbox" class="input">
+              <span class="slider"></span>
+            </label>
         </nav>
     </header>
 
@@ -89,33 +95,51 @@
                     <span class="tech-stack-animated" id="stack-animated-text">constantly expanding skills</span>
                 </h2>
             </div>
-            <div class="tech-stack-grid">
-                <div class="tech-stack-item" data-tech="Machine Learning" data-color="#FFB300">
-                    <img src="images/skills/ml.gif" alt="ML models">
+                        <div class="tech-stack-grid">
+                <div class="tech-stack-outer" data-tech="Machine Learning" data-color="#FFB300">
+                    <div class="tech-stack-item">
+                        <img src="images/skills/ml.gif" alt="ML models">
+                    </div>
                 </div>
-                <div class="tech-stack-item" data-tech="JavaScript" data-color="#3C873A">
-                    <img src="images/skills/nodejs.png" alt="Node.js">
+                <div class="tech-stack-outer" data-tech="JavaScript" data-color="#3C873A">
+                    <div class="tech-stack-item">
+                        <img src="images/skills/nodejs.png" alt="Node.js">
+                    </div>
                 </div>
-                <div class="tech-stack-item" data-tech="Web Sockets" data-color="#010101">
-                    <img src="images/skills/socket.gif" alt="WebSockets">
+                <div class="tech-stack-outer" data-tech="Web Sockets" data-color="#010101">
+                    <div class="tech-stack-item">
+                        <img src="images/skills/socket.gif" alt="WebSockets">
+                    </div>
                 </div>
-                <div class="tech-stack-item" data-tech="Tableau" data-color="#47A248">
-                    <img src="images/skills/stats.gif" alt="Tableau">
+                <div class="tech-stack-outer" data-tech="Tableau" data-color="#47A248">
+                    <div class="tech-stack-item">
+                        <img src="images/skills/stats.gif" alt="Tableau">
+                    </div>
                 </div>
-                <div class="tech-stack-item" data-tech="Python" data-color="#3572A5">
-                    <img src="images/skills/python1.png" alt="Python">
+                <div class="tech-stack-outer" data-tech="Python" data-color="#3572A5">
+                    <div class="tech-stack-item">
+                        <img src="images/skills/python1.png" alt="Python">
+                    </div>
                 </div>
-                <div class="tech-stack-item" data-tech="Natural Language Processing" data-color="#8E44AD">
-                    <img src="images/skills/nlp.gif" alt="NLP">
+                <div class="tech-stack-outer" data-tech="Natural Language Processing" data-color="#8E44AD">
+                    <div class="tech-stack-item">
+                        <img src="images/skills/nlp.gif" alt="NLP">
+                    </div>
                 </div>
-                <div class="tech-stack-item" data-tech="Neural Networks" data-color="#E74C3C">
-                    <img src="images/skills/neural.gif" alt="Neural Networks">
+                <div class="tech-stack-outer" data-tech="Neural Networks" data-color="#E74C3C">
+                    <div class="tech-stack-item">
+                        <img src="images/skills/neural.gif" alt="Neural Networks">
+                    </div>
                 </div>
-                <div class="tech-stack-item" data-tech="Git" data-color="#F05032">
-                    <img src="images/skills/git.png" alt="Git">
+                <div class="tech-stack-outer" data-tech="Git" data-color="#F05032">
+                    <div class="tech-stack-item">
+                        <img src="images/skills/git.png" alt="Git">
+                    </div>
                 </div>
-                <div class="tech-stack-item" data-tech="SQL" data-color="#336791">
-                    <img src="images/skills/sql.gif" alt="SQL">
+                <div class="tech-stack-outer" data-tech="SQL" data-color="#336791">
+                    <div class="tech-stack-item">
+                        <img src="images/skills/sql.gif" alt="SQL">
+                    </div>
                 </div>
             </div>
         </div>
