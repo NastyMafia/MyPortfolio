@@ -316,21 +316,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 }); // End second DOMContentLoaded
 
-// filepath: f:\Project\clones\MyPortfolio\script.js
 document.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.querySelector('#darkModeToggle .input');
+    const toggle = document.getElementById('checkbox');
     // Set initial state from localStorage
     if(localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
-        if(toggle) toggle.checked = true;
+        if(toggle) toggle.checked = false; // Unchecked for dark mode
+    } else {
+        document.body.classList.remove('dark-mode');
+        if(toggle) toggle.checked = true; // Checked for light mode
     }
     if(toggle) {
         toggle.addEventListener('change', () => {
-            document.body.classList.toggle('dark-mode');
-            if(document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-            } else {
+            if(toggle.checked) {
+                document.body.classList.remove('dark-mode');
                 localStorage.setItem('theme', 'light');
+            } else {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
             }
         });
     }

@@ -15,84 +15,102 @@
 }
 
 
+/* Theme Switch */
+/* The switch - the box around the slider */
 .switch {
-font-size: 17px;
-position: relative;
-display: inline-block;
-width: 64px;
-height: 34px;
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 4em;
+  height: 2.2em;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Hide default HTML checkbox */
 .switch input {
-opacity: 0;
-width: 0;
-height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
+/* The slider */
 .slider {
-position: absolute;
-cursor: pointer;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background-color: #6ffbe8;
-transition: .4s;
-border-radius: 20px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2a2a2a;
+  transition: 0.4s;
+  border-radius: 30px;
+  overflow: hidden;
 }
 
 .slider:before {
-position: absolute;
-content: "";
-height: 24px;
-width: 24px;
-border: inset, 3px;
-border-color: #aac6c0;
-border-radius: 20px;
-left: 2px;
-bottom: 2px;
-z-index: 2;
-background-color: #c1ddce;
-transition: .4s;
+  position: absolute;
+  content: "";
+  height: 1.2em;
+  width: 1.2em;
+  border-radius: 20px;
+  left: 0.5em;
+  bottom: 0.5em;
+  transition: 0.4s;
+  transition-timing-function: cubic-bezier(0.81, -0.04, 0.38, 1.5);
+  box-shadow: inset 8px -4px 0px 0px #fff;
 }
 
-.sun svg {
-position: absolute;
-top: 6px;
-left: 36px;
-z-index: 1;
-width: 24px;
-height: 24px;
+.switch input:checked + .slider {
+  background-color: #00a6ff;
 }
 
-.moon svg {
-fill: #73C0FC;
-position: absolute;
-top: 5px;
-left: 5px;
-z-index: 1;
-width: 24px;
-height: 24px;
+.switch input:checked + .slider:before {
+  transform: translateX(1.8em);
+  box-shadow: inset 15px -4px 0px 15px #ffcf48;
 }
 
-witch:hover */.sun svg {
-animation: rotate 15s linear infinite;
+.star {
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  width: 5px;
+  transition: all 0.4s;
+  height: 5px;
 }
 
-@keyframes rotate {
-
-0% {
-transform: rotate(0);
+.star_1 {
+  left: 2.5em;
+  top: 0.5em;
 }
 
-100% {
-transform: rotate(360deg);
-}
+.star_2 {
+  left: 2.2em;
+  top: 1.2em;
 }
 
-itch:hover */.moon svg {
-animation: tilt 5s linear infinite;
+.star_3 {
+  left: 3em;
+  top: 0.9em;
 }
+
+.switch input:checked ~ .slider .star {
+  opacity: 0;
+}
+
+.cloud {
+  width: 3.5em;
+  position: absolute;
+  bottom: -1.4em;
+  left: -1.1em;
+  opacity: 0;
+  transition: all 0.4s;
+}
+
+.switch input:checked ~ .slider .cloud {
+  opacity: 1;
+}
+
 
 @keyframes tilt {
 
