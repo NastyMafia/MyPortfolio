@@ -181,7 +181,7 @@ body, html {
   position: absolute;
   cursor: pointer;
   top: 0;
-  left: 0;
+  left: 2px;
   right: 0;
   bottom: 0;
   background-color: #2a2a2a;
@@ -196,11 +196,11 @@ body, html {
   height: 1em;
   width: 1em;
   border-radius: 20px;
-  left: 0.5em;
+  left: 0.35em;
   bottom: 0.3em;
   transition: 0.4s;
   transition-timing-function: cubic-bezier(0.81, -0.04, 0.38, 1.5);
-  box-shadow: inset 8px -4px 0px 0px #fff;
+  box-shadow: inset 6px 0px 0px 3px #fff;
 }
 
 .switch input:checked + .slider {
