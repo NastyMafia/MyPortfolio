@@ -1,4 +1,147 @@
-/* --- Global Styles & Variables --- */
+/* Welcome Page Overlay */
+#welcome-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw; height: 100vh;
+    background: #181a1b;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    font-weight: 700;
+    z-index: 99999;
+    opacity: 1;
+    transition: transform 0.7s cubic-bezier(.77,0,.18,1), opacity 0.3s;
+    pointer-events: all;
+    transform: translateY(0);
+}
+
+.welcome-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome-text {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 18px;
+}
+
+#welcome-overlay.hide {
+    opacity: 0;
+    transform: translateY(-100vh);
+    pointer-events: none;
+}
+
+.loader {
+    width: 80px;
+    height: 50px;
+    position: relative;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.load {
+    background-color: #00caaf; /* Accent color */
+    border-radius: 50px;
+    display: block;
+    height: 16px;
+    width: 16px;
+    bottom: 0;
+    position: absolute;
+    transform: translateX(64px);
+    animation: loading_713 2.2s ease both infinite;
+}
+
+.load::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #1976d2; /* Primary color */
+    border-radius: inherit;
+    animation: loading2_713 2.2s ease both infinite;
+}
+
+@keyframes loading_713 {
+    0% {
+        width: 16px;
+        transform: translateX(0px);
+    }
+    40% {
+        width: 100%;
+        transform: translateX(0px);
+    }
+    80% {
+        width: 16px;
+        transform: translateX(64px);
+    }
+    90% {
+        width: 100%;
+        transform: translateX(0px);
+    }
+    100% {
+        width: 16px;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes loading2_713 {
+    0% {
+        transform: translateX(0px);
+        width: 16px;
+    }
+    40% {
+        transform: translateX(0%);
+        width: 80%;
+    }
+    80% {
+        width: 100%;
+        transform: translateX(0px);
+    }
+    90% {
+        width: 80%;
+        transform: translateX(15px);
+    }
+    100% {
+        transform: translateX(0px);
+        width: 16px;
+    }
+}
+
+body, html {
+    font-family: Consolas, monospace !important;
+}
+
+/* Remove roundness from all elements */
+*,
+*:before,
+*:after {
+    border-radius: 0 !important;
+}
+
+:root {
+    --primary-color: #1976d2;
+    --secondary-color: #f5f5f5;
+    --secondary-color-inv: #212121;
+    --tertiary-color: #388e3c;
+    --accent-color: #ff9800;
+    --text-light: #ffffff;
+    --text-dark: #212121;
+    --text-muted: #757575;
+    --gradient-start: #1976d2;
+    --gradient-end: #388e3c;
+    --tag-light: #e0e0e0;
+    --tag-dark: #616161;
+}
+
+/* --- Global Styles & Variables 
 :root {
     --primary-color: #00caaf;
     --secondary-color: #ffffff;
@@ -12,10 +155,9 @@
     --gradient-end: #00f1e100; 
     --tag-light: #e7e7e7;
     --tag-dark: #8d8d8d;
-}
+} --- */
 
 
-/* Theme Switch */
 /* The switch - the box around the slider */
 .switch {
   font-size: 17px;
@@ -43,7 +185,7 @@
   right: 0;
   bottom: 0;
   background-color: #2a2a2a;
-  transition: 0.4s;
+  transition: 0.5s;
   border-radius: 30px;
   overflow: hidden;
 }
@@ -144,19 +286,19 @@ transform: translateX(30px);
 }
 
 body.dark-mode {
-    --primary-color: #00caaf;
-    --secondary-color: #181a1b;
-    --secondary-color-inv: #ffffff;
-    --tertiary-color: #00d123;
-    --accent-color: #61e900;
-    --text-light: #f7f7f7;
-    --text-dark: #e7e7e7;
-    --text-muted: #424242;
-    --gradient-start: #00332e;
-    --gradient-end: #00332e00;
-    --header-bg: rgba(0, 32, 24, 0.85);
-    --tag-light: #8d8d8d;
-    --tag-dark: #e7e7e7;
+    --primary-color: #1565c0;         /* Darker blue */
+    --secondary-color: #212121;       /* Material dark background */
+    --secondary-color-inv: #f5f5f5;   /* Light text on dark */
+    --tertiary-color: #2e7d32;        /* Darker green */
+    --accent-color: #ff9800;          /* Material orange accent */
+    --text-light: #e0e0e0;            /* Light gray for text */
+    --text-dark: #212121;             /* Very dark for contrast */
+    --text-muted: #757575;            /* Muted gray */
+    --gradient-start: #1565c0;        /* Gradient start (dark blue) */
+    --gradient-end: #2e7d32;          /* Gradient end (dark green) */
+    --header-bg: rgba(33, 33, 33, 0.95); /* More opaque dark header */
+    --tag-light: #424242;             /* Dark tag background */
+    --tag-dark: #e0e0e0;              /* Light tag text */
     background: #181a1b;
     color: var(--text-light);
 }
@@ -466,24 +608,35 @@ header nav ul li a:hover {
     align-items: center;   /* Center children horizontally */
 }
 
+.hero-content-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
 .hero-content h0n {
     color: var(--text-light);
     animation: none;
-    margin-bottom: 15px; /* Existing */
+    margin-bottom: 5px; /* Existing */
 }
 
 .hero-content h1 {
     color: var(--text-light);
     animation: none;
-    margin-bottom: 15px; /* Existing */
+    margin-bottom: 10px; /* Existing */
 }
 
 /* Target the specific paragraph for typing */
 .hero-content p#typing-tagline {
-    font-size: 2.4rem; /* CHANGED: Increased font size */
-    font-weight: 300;
+    font-size: 3rem; /* CHANGED: Increased font size */
+    font-weight: 500;
     margin-bottom: 30px; /* Keep or adjust as needed */
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 1);
     min-height: 1.5em; /* Keep to prevent vertical jumps */
     position: relative; /* Needed for cursor */
     display: inline-block; /* Needed for cursor */
@@ -507,38 +660,116 @@ header nav ul li a:hover {
     50% { opacity: 0; }
 }
 
-/* Scroll Down Indicator */
-.scroll-down {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
-}
-.scroll-down a {
-    display: block;
-    width: 24px;
-    height: 34px;
-    border: 2px solid var(--text-light);
-    border-radius: 12px;
+.spinner {
+    width: 44px;
+    height: 44px;
+    margin: 32px 0 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-}
-.scroll-down span {
-    display: block;
-    width: 4px;
-    height: 8px;
-    background-color: var(--text-light);
-    border-radius: 2px;
-    position: absolute;
-    left: 50%;
-    top: 8px;
-    transform: translateX(-50%);
-    animation: scrollIndicator 2s infinite ease-out;
+    animation: spinner-y0fdc1 2s infinite ease;
+    transform-style: preserve-3d;
+    position: relative;
+    z-index: 10;
 }
 
-@keyframes scrollIndicator {
-    0% { top: 8px; opacity: 1; }
-    100% { top: 20px; opacity: 0; }
+.spinner > div {
+    background-color: rgba(25, 118, 210, 0.18); /* Material blue, matches --primary-color */
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    border: 2px solid #1976d2; /* Material blue */
+    box-sizing: border-box;
+}
+
+.spinner div:nth-of-type(1) {
+    transform: translateZ(-22px) rotateY(180deg);
+}
+.spinner div:nth-of-type(2) {
+    transform: rotateY(-270deg) translateX(50%);
+    transform-origin: top right;
+}
+.spinner div:nth-of-type(3) {
+    transform: rotateY(270deg) translateX(-50%);
+    transform-origin: center left;
+}
+.spinner div:nth-of-type(4) {
+    transform: rotateX(90deg) translateY(-50%);
+    transform-origin: top center;
+}
+.spinner div:nth-of-type(5) {
+    transform: rotateX(-90deg) translateY(50%);
+    transform-origin: bottom center;
+}
+.spinner div:nth-of-type(6) {
+    transform: translateZ(22px);
+}
+
+@keyframes spinner-y0fdc1 {
+    0% {
+        transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+    }
+    50% {
+        transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+    }
+    100% {
+        transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+    }
+}
+
+.scroll-down {
+    margin-top: 32px;
+    position: sticky;
+    bottom: 30px;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scroll-down a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    height: 40px;
+    padding: 0 18px;
+    border: 2px solid var(--text-light);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background 0.3s, color 0.3s;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+}
+
+.scroll-down a:hover {
+    background: var(--secondary-color);
+    color: var(--text-light);
+}
+
+@keyframes scrollTextBounce {
+    0%   { transform: translateY(0); }
+    20%  { transform: translateY(-6px); }
+    40%  { transform: translateY(0); }
+    60%  { transform: translateY(6px); }
+    80%  { transform: translateY(0); }
+    100% { transform: translateY(0); }
+}
+
+.scroll-down span {
+    margin-left: 8px;
+    font-size: 1.1rem;
+    color: inherit;
+    display: inline-block;
+    vertical-align: middle;
+    transition: color 0.3s;
+    animation: scrollTextBounce 1.6s infinite;
 }
 
 /* --- About Section --- */
@@ -587,9 +818,21 @@ header nav ul li a:hover {
     border-radius: 2rem;
     cursor: pointer;
     border: none;
-    background: linear-gradient(to right, var(--tertiary-color), var(--accent-color));
+    background: var(--secondary-color);
     color: ghostwhite;
     overflow: hidden;              /* ensure children are clipped */
+}
+
+body:not(.dark-mode) .cssbuttons-io:hover {
+    color: #333333;
+}
+
+.cssbuttons-io:hover::before {
+    transform: skewX(-30deg) translateX(250%);
+}
+
+.cssbuttons-io:active {
+    transform: scale(0.95);
 }
 
 .cssbuttons-io svg {
@@ -621,18 +864,6 @@ header nav ul li a:hover {
     pointer-events: none;         /* don’t block clicks */
     transition: transform 0.8s;
 }
-
-.cssbuttons-io:hover {
-    color: #ffffff
-}
-.cssbuttons-io:hover::before {
-    transform: skewX(-30deg) translateX(250%);
-}
-
-.cssbuttons-io:active {
-    transform: scale(0.95);
-}
-
 
 .pushable {
     position: relative;
@@ -732,7 +963,7 @@ header nav ul li a:hover {
 }
 
 .tech-stack-header h2 {
-    font-size: 2rem; /* Adjust as needed */
+    font-size: 2rem; 
     font-weight: 600;
     line-height: 1.3;
     min-height: calc(2rem * 1.3 * 2); 
@@ -740,7 +971,7 @@ header nav ul li a:hover {
 
 /* --- Text Animation --- */
 .tech-stack-animated {
-    color: #00db75; /* Your highlight color */
+    color: #00db75; /* highlight color */
     font-weight: 700;
     display: inline-block; /* Needed for transform and smooth height */
     vertical-align: bottom; /* Helps alignment if line height changes */
@@ -802,7 +1033,7 @@ header nav ul li a:hover {
     border-radius: 20px;
     transition: box-shadow 0.25s cubic-bezier(0, 0, 0, 1);
     margin: 2px;
-    box-shadow: 0px 0px 30px 1px rgba(0, 219, 117, 0.3);
+    box-shadow: 0px 0px 30px 1px rgba(41, 134, 255, 0.3);
 }
 
 .tech-stack-outer::before {
@@ -815,8 +1046,8 @@ header nav ul li a:hover {
     /* Use the custom property in your linear gradient */
     background: linear-gradient(
         var(--gradient-angle), /* Uses the animatable custom property */
-        #00caaf 0%,
-        #17f055 100%
+        #39f8bf 0%,
+        #3c35ff 100%
     );
     pointer-events: none; /* Pseudo-element shouldn't capture mouse events */
     /* The original 'opacity: 1' and 'transition: opacity 0.3s' on ::before
@@ -825,21 +1056,9 @@ header nav ul li a:hover {
 }
 
 .tech-stack-outer:hover {
-    box-shadow: 0px 0px 30px 1px rgba(0, 219, 117, 0.30);
-    /*
-      Other properties (width, height, display, border-radius, margin, etc.)
-      were redundant in your :hover state as they didn't change from the base
-      .tech-stack-outer style. The transition for box-shadow is correctly
-      defined on the base .tech-stack-outer selector.
-    */
+    box-shadow: 0px 0px 30px 1px rgba(18, 145, 250, 0.452);
 }
 
-/*
-  Updated keyframes for smooth gradient rotation.
-  We animate the --gradient-angle custom property.
-  You can rename 'smooth-rotate-gradient' back to 'rotate-gradient'
-  if you want to keep the exact same keyframe name.
-*/
 @keyframes smooth-rotate-gradient {
     0% {
         /* Start at the initial angle defined in @property or explicitly here */
@@ -852,14 +1071,11 @@ header nav ul li a:hover {
 }
 
 .tech-stack-outer:hover::before {
-    /* Apply the smooth animation on hover */
     animation: smooth-rotate-gradient 2s linear infinite;
-    /* The 'opacity: 1;' was redundant as ::before is opacity 1 by default
-       and no previous state was making it transparent before hover. */
 }
 
 .tech-stack-outer:hover .tech-stack-item {
-    transform: scale(0.925);
+    transform: scale(0.9);
     border-radius: 18px;
 }
 
@@ -874,8 +1090,8 @@ header nav ul li a:hover {
 }
 
 .tech-stack-item:hover {
-    box-shadow: 0 4px 16px rgba(0, 219, 117, 0.15); /* Use your green color */
-    transform: scale(0.95);
+    box-shadow: 0 4px 16px rgba(19, 150, 250, 0.15); /* Use your green color */
+    transform: scale(0.9);
     z-index: 2;
 }
 
@@ -984,7 +1200,7 @@ a.project-card-link {
 
 /* Preview section (shown on hover/active) */
 .project-card .card-preview {
-    padding: 0 15px 15px 15px; /* Keep consistent padding */
+    padding: 0 15px 15px 15px; 
 }
 
 .project-card .card-preview img {
@@ -993,7 +1209,7 @@ a.project-card-link {
     object-fit: cover;
     border-radius: 8px;
     border-style: solid;
-    border-color: var(--accent-color);
+    border-color: var(--primary-color);
     border-width: 2px;
     display: block;
     margin-bottom: 12px;
@@ -1006,13 +1222,14 @@ a.project-card-link {
 }
 
 .project-card .project-tags .tag {
-    background-color: var(--text-muted);
+    background-color: rgba(174, 174, 174, 0.47);
     color: var(--secondary-color-inv);
     padding: 3px 8px;
-    border-radius: 8px;
+    border-radius: 4px;
+    border-color: var(--text-muted);
     font-size: 0.9rem;
     font-weight: 700;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.34);
+    box-shadow: rgba(207, 207, 207, 0.571);
 }
 
 /* --- Hover Effect (ONLY for NON-ACTIVE cards) --- */

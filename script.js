@@ -1,3 +1,13 @@
+
+document.addEventListener('DOMContentLoaded', () => {
+    const welcome = document.getElementById('welcome-overlay');
+    if (welcome) {
+        setTimeout(() => {
+            welcome.classList.add('hide');
+        }, 1500);
+    }
+});
+
 // --- Tech Stack Animated Text ---
 const animated = document.getElementById('stack-animated-text');
 if (animated) { // Check if element exists before adding listeners

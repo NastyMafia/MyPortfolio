@@ -9,13 +9,22 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> -->
 
     <link rel="stylesheet" href="diddysstyle.css">
 </head>
 
 <body>
+
+    <div id="welcome-overlay">
+        <div class="welcome-content">
+        <span class="welcome-text">Welcome</span>
+            <div class="loader">
+                <span class="load"></span>
+            </div>
+        </div>
+    </div>
     <!-- Header & Navigation -->
     <header>
         <nav class="container">
@@ -46,25 +55,28 @@
 
 <!-- Hero Section -->
 <section id="home" class="hero">
-    
-    <!-- Background image -->
     <img src="images/bg-port.jpg" id="bg-image" alt="Portfolio background image">
 
-    <!-- Existing Hero Content -->
-    <div class="hero-content">
-        <h0n>Hi, I'm Nitish</h0n>
-        <h1>your go-to</h1>
-        <p id="typing-tagline"></p>
-        <a href="#projects" class="cssbuttons-io" target="_blank" aria-label="View My Work">
-            <span>
-                View My Work
-            </span>
-        </a>
-    </div>
-
-    <!-- Existing Scroll Down Indicator -->
-    <div class="scroll-down">
-        <a href="#about" class="cssbuttons-io"><span>'</span></a>
+    <div class="hero-content-col">
+        <div class="hero-content">
+            <h0n>Hi, I'm Nitish</h0n>
+            <h1>your go-to</h1>
+            <p id="typing-tagline"></p>
+            <a href="#projects" class="cssbuttons-io" aria-label="View My Work">
+                <span>View My Work</span>
+            </a>
+        </div>
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="scroll-down">
+            <a href="#about" class="cssbuttons-io"><span>Scroll</span></a>
+        </div>
     </div>
 </section>
 
