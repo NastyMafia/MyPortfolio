@@ -8,6 +8,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+document.querySelectorAll('.cssbuttons-io').forEach(btn => {
+    let glow = document.createElement('span');
+    glow.className = 'cursor-glow';
+    btn.appendChild(glow);
+
+    btn.addEventListener('mousemove', e => {
+        const rect = btn.getBoundingClientRect();
+        glow.style.left = (e.clientX - rect.left - 30) + 'px';
+        glow.style.top = (e.clientY - rect.top - 15) + 'px';
+        glow.style.display = 'block';
+    });
+
+    btn.addEventListener('mouseleave', () => {
+        glow.style.display = 'none';
+    });
+});
+
 // --- Tech Stack Animated Text ---
 const animated = document.getElementById('stack-animated-text');
 if (animated) { // Check if element exists before adding listeners

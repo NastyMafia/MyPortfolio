@@ -115,9 +115,7 @@
     }
 }
 
-body, html {
-    font-family: Consolas, monospace !important;
-}
+body, html {font-family: Consolas, monospace !important;}
 
 /* Remove roundness from all elements */
 *,
@@ -660,67 +658,56 @@ header nav ul li a:hover {
     50% { opacity: 0; }
 }
 
-.spinner {
-    width: 44px;
-    height: 44px;
-    margin: 32px 0 24px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    animation: spinner-y0fdc1 2s infinite ease;
-    transform-style: preserve-3d;
-    position: relative;
-    z-index: 10;
+.loadere {
+  --cell-size: 52px;
+  --cell-spacing: 1px;
+  --cells: 3;
+  --total-size: calc(var(--cells) * (var(--cell-size) + 2 * var(--cell-spacing)));
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: var(--total-size);
+  height: var(--total-size);
 }
 
-.spinner > div {
-    background-color: rgba(25, 118, 210, 0.18); /* Material blue, matches --primary-color */
-    height: 100%;
-    position: absolute;
-    width: 100%;
-    border: 2px solid #1976d2; /* Material blue */
-    box-sizing: border-box;
+.cell {
+  flex: 0 0 var(--cell-size);
+  margin: var(--cell-spacing);
+  background-color: transparent;
+  box-sizing: border-box;
+  border-radius: 4px;
+  animation: 1.5s ripple ease infinite;
 }
 
-.spinner div:nth-of-type(1) {
-    transform: translateZ(-22px) rotateY(180deg);
-}
-.spinner div:nth-of-type(2) {
-    transform: rotateY(-270deg) translateX(50%);
-    transform-origin: top right;
-}
-.spinner div:nth-of-type(3) {
-    transform: rotateY(270deg) translateX(-50%);
-    transform-origin: center left;
-}
-.spinner div:nth-of-type(4) {
-    transform: rotateX(90deg) translateY(-50%);
-    transform-origin: top center;
-}
-.spinner div:nth-of-type(5) {
-    transform: rotateX(-90deg) translateY(50%);
-    transform-origin: bottom center;
-}
-.spinner div:nth-of-type(6) {
-    transform: translateZ(22px);
-}
+.cell.d-1 {animation-delay: 100ms;}
+.cell.d-2 {animation-delay: 200ms;}
+.cell.d-3 {animation-delay: 300ms;}
+.cell.d-4 {animation-delay: 400ms;}
+.cell:nth-child(1) {--cell-color: #00FF87;}
+.cell:nth-child(2) {--cell-color: #0CFD95;}
+.cell:nth-child(3) {--cell-color: #17FBA2;}
+.cell:nth-child(4) {--cell-color: #23F9B2;}
+.cell:nth-child(5) {--cell-color: #30F7C3;}
+.cell:nth-child(6) {--cell-color: #3DF5D4;}
+.cell:nth-child(7) {--cell-color: #45F4DE;}
+.cell:nth-child(8) {--cell-color: #53F1F0;}
+.cell:nth-child(9) {--cell-color: #60EFFF;}
 
-@keyframes spinner-y0fdc1 {
-    0% {
-        transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
-    }
-    50% {
-        transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
-    }
-    100% {
-        transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
-    }
+/*Animation*/
+@keyframes ripple {
+  0% {background-color: transparent;}
+
+  30% {background-color: var(--cell-color);}
+
+  60% {background-color: transparent;}
+
+  100% {background-color: transparent;}
 }
 
 .scroll-down {
     margin-top: 32px;
-    position: sticky;
+    position: relative;
+    top: 50px;
     bottom: 30px;
     z-index: 5;
     display: flex;
@@ -823,17 +810,27 @@ header nav ul li a:hover {
     overflow: hidden;              /* ensure children are clipped */
 }
 
-body:not(.dark-mode) .cssbuttons-io:hover {
-    color: #333333;
+.cssbuttons-io .cursor-glow {
+    position: absolute;
+    pointer-events: none;
+    width: 60px;
+    height: 30px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, var(--text-light) 0%, transparent 80%);
+    opacity: 0.5;
+    filter: blur(8px);
+    z-index: 2;
+    transition: opacity 0.2s;
+    left: 0;
+    top: 0;
+    display: none;
 }
 
-.cssbuttons-io:hover::before {
-    transform: skewX(-30deg) translateX(250%);
-}
+body:not(.dark-mode) .cssbuttons-io:hover {color: #333333;}
 
-.cssbuttons-io:active {
-    transform: scale(0.95);
-}
+.cssbuttons-io:hover::before {transform: skewX(-30deg) translateX(250%);}
+
+.cssbuttons-io:active {transform: scale(0.95);}
 
 .cssbuttons-io svg {
     width: 1.2em;
@@ -843,7 +840,7 @@ body:not(.dark-mode) .cssbuttons-io:hover {
 
 .cssbuttons-io span {
     position: relative;
-    z-index: 2;                   /* above the ::before sweep */
+    z-index: 2;               /* above the ::before sweep */
     display: inline-flex;
     align-items: center;
     padding: 0.8em 1.2em 0.8em 1.05em;
