@@ -800,17 +800,16 @@ header nav ul li a:hover {
   position: relative;
 }
 
-.skill-bar{z-index: 1;}
+.skill-bar{z-index: 1;border: solid 2px;}
 
 .skill-bar .skill-per {
     position: relative;
     display: block;
     height: 100%;
-    border-radius: 6px;
     background: var(--text-opp);
     width: 0;
     opacity: 0;
-
+    
     animation: fillBar 1s ease-out forwards;
     z-index: 2;
 }
@@ -823,7 +822,7 @@ header nav ul li a:hover {
     width: calc(100% - var(--skill-per-width, 0%));
     border-radius: 0 6px 6px 0;
     overflow: hidden;
-    background: repeating-linear-gradient(45deg, #00cd26 0px 15px,#0fb20085 0 20px) left top;
+    background: repeating-linear-gradient(45deg, #00aa1fb4 0px 10px,#15ff00ae 0 20px) right top;
     background-size: 180% 50%;
     background-repeat: no-repeat;
     animation: i4 2s infinite linear;
@@ -836,16 +835,8 @@ header nav ul li a:hover {
     left: 0;
     bottom: 50%;
     width: 100%;
-    /* Create the slanted shimmer gradient */
-    background: linear-gradient(
-        105deg,
-        transparent 40%,
-        rgba(255, 255, 255, 0.5) 50%,
-        transparent 60%
-    );
-    /* Animate the shimmer from left to right infinitely */
+    background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.5) 50%, transparent 60%);
     animation: shimmer 2s infinite;
-    /* Start the animation with a delay so the bar has time to fill first */
     animation-delay: 0.8s;
 }
 
@@ -855,11 +846,7 @@ header nav ul li a:hover {
 .skill-per.nodejs { width: 70%; animation-delay: 0.3s;}
 
 @keyframes fillBar {
-    to {
-        width: var(--skill-per-width, 0%);
-        opacity: 1;
-    }
-}
+    to {width: var(--skill-per-width, 0%); opacity: 1;}}
 
 @keyframes shimmer {
     0% {
@@ -872,7 +859,7 @@ header nav ul li a:hover {
 
 @keyframes i4 {
   100% {
-    background-position: top right,bottom right
+    background-position: top left, bottom left
   }
 }
 
