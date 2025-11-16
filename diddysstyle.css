@@ -929,7 +929,7 @@ header nav ul li a:hover {
     border: solid var(--gradient-start);
     background: var(--secondary-color);
     color: ghostwhite;
-    overflow: hidden;              /* ensure children are clipped */
+    overflow: hidden;
 }
 
 .cssbuttons-io .cursor-glow {
@@ -952,29 +952,22 @@ body:not(.dark-mode) .cssbuttons-io:hover {color: #333333;}
 
 .cssbuttons-io:active {transform: scale(0.95);}
 
-.cssbuttons-io svg {
-    width: 1.2em;
-    height: 1.2em;
-    margin-right: 0.5em;
-}
-
 .cssbuttons-io span {
     position: relative;
-    z-index: 2;               /* above the ::before sweep */
+    z-index: 2;
     display: inline-flex;
     text-align: center;
     padding: 0.8em 1.2em 0.8em 1.05em;
     transition: color 0.4s;
 }
 
-/* single “sweep” layer */
 .cssbuttons-io::before {
     content: "";
     position: absolute;
     top: 0; left: -30%;           
     width: 200%;  
     height: 100%;
-    background: linear-gradient(to right, var(--gradient-start), var(--primary-color));  /* semi-transparent black */
+    background: linear-gradient(to right, var(--gradient-start), var(--primary-color));
     transform: skewX(-30deg) translateX(0);
     transform-origin: top left;
     border-radius: inherit;       
